@@ -1,0 +1,103 @@
+.class_liss{
+    background-color: #fff;
+    width: 80%;
+    height: 100%;
+}
+.class_liss button{
+    padding: 10px;
+    width: 15%;
+    height: 50px;
+    border-radius: 6px;
+    border: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    color: #fff;
+    /* background-color: rgb(179, 197, 245); */
+    background-color: rgb(0, 185, 56);
+    margin-left: 4%;
+    margin-top: 1%;
+    cursor: pointer;
+}
+
+.header_class_liss{
+    padding: 20px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 26px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header_class_liss h2{
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.class_list_body{
+    display: flex;
+    justify-content: space-around; 
+    flex-wrap: wrap; 
+}
+
+.class_list_body .item{
+    width: 300px;
+    height: 430px;
+    margin: 2%;
+    border: 5px solid #000;
+    border-radius: 3px;
+}
+
+.class_list_body img{
+    width: 100%;
+    display: block;
+}
+
+.class_list_body img:hover{
+    opacity: 0.6;
+}
+
+.content_item{
+    background-color: #fff;
+    display: inline-block;
+    width: 300px;
+    padding-bottom: 10px;
+}
+
+.class_name{
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+.class_teacher{
+    padding-left: 10px;
+    opacity: 0.8;
+    font-family: sans-serif;
+}
+
+.class_number{
+    padding-left: 10px;
+    font-family: "Lato", sans-serif;
+}
+
+.class_number span{
+
+}
+
+.content_item_btn{
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    padding-top: 10px;
+    width: 136px;
+    height: 28px;
+    background-color: #000;
+    color: #fff;
+    margin-left: 10px;
+    font-family: sans-serif;
+    font-size: 15px;
+    border-radius: 6px;
+}
+
+.content_item_btn:hover{
+    color: #000;
+    background-color: #ccc;
+}

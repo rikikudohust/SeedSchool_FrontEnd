@@ -8,6 +8,9 @@
     position: relative;
     z-index: 1;
 }
+.container h5{
+    font-weight: 50;
+}
 .scrips{
     z-index: 0;
 }

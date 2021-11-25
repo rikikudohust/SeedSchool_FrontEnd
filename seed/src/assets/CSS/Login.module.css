@@ -71,6 +71,9 @@
     background-color: #1877f2;
     cursor: pointer;
 }
+.table button:hover{
+    background-color: #3c91ff;
+}
 .table h4{
     color: #1877f2;
     font-weight: 15;

@@ -1,7 +1,7 @@
 import React from "react";
 import classes from '../../assets/CSS/admin/Day.module.css'
 import styled from "styled-components";
-import { Create, Settings, SettingsAccessibilityOutlined } from "@mui/icons-material";
+import { Create } from "@mui/icons-material";
 
 const Back = styled.div`
     opacity: 0;
@@ -20,13 +20,13 @@ const Day = props => {
     return <>
         <div className={classes.container}>
             <Back>
-                <Create className={classes.icon} />
+                <Create className={classes.icon} onClick={props.onTurnOnEditMenu} />
             </Back>
             <div>
-                <h4 className={classes.scrips}>{props.day.day}</h4>
-                <h6 className={classes.scrips}>Breakfast: {props.day.breakfast}</h6>
-                <h6 className={classes.scrips}>Lunch: {props.day.lunch}</h6>
-                <h6 className={classes.scrips}>Dinner: {props.day.dinner}</h6>
+                <h3 className={classes.scrips}>{props.day.day}</h3>
+                <h5 className={classes.scrips}>Breakfast: {props.day.breakfast}</h5>
+                <h5 className={classes.scrips}>Lunch: {props.day.lunch}</h5>
+                <h5 className={classes.scrips}>Dinner: {props.day.dinner}</h5>
             </div>
 
         </div>
