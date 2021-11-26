@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import activities from '../../assets/DummyData/Admin/Activities'
-import classes from '../../assets/CSS/admin/Activities.module.css'
+import classes from '../../assets/CSS/general/Activities.module.css'
 import styled from "styled-components";
 import { ArrowLeft, ArrowRight } from "@mui/icons-material";
 
@@ -34,24 +34,21 @@ const Activities = props => {
     }
 
     return <>
-        <div className={classes.outermost}>
-            <button>Thêm hoạt động</button>
-            <div className={classes.container}>
+        <div className={classes.container}>
 
-                <div className={classes['arrow-left']}>
-                    <ArrowLeft onClick={() => clickHandler("left")} />
-                </div>
-                <Wrapper sliderIndex={sliderIndex}>
-                    {activities.map(element =>
-                        <div className={classes.activity}>
-                            <img src={element.img} />
-                            <button>{element.date}</button>
-                        </div>
-                    )}
-                </Wrapper>
-                <div className={classes['arrow-right']}>
-                    <ArrowRight onClick={() => clickHandler("right")} />
-                </div>
+            <div className={classes['arrow-left']}>
+                <ArrowLeft onClick={() => clickHandler("left")} />
+            </div>
+            <Wrapper sliderIndex={sliderIndex}>
+                {activities.map(element =>
+                    <div className={classes.activity}>
+                        <img src={element.img} />
+                        <button>{element.date}</button>
+                    </div>
+                )}
+            </Wrapper>
+            <div className={classes['arrow-right']}>
+                <ArrowRight onClick={() => clickHandler("right")} />
             </div>
         </div>
     </>

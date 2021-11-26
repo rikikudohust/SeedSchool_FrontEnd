@@ -1,6 +1,5 @@
 import React from "react"
-import classes from '../assets/CSS/Login.module.css'
-import icon from '../assets/Icons/S.png'
+import classes from '../../assets/CSS/general/Login.module.css'
 
 const Login = prosp => {
     return <>

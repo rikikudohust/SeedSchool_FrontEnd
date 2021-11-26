@@ -3,6 +3,7 @@
     flex-direction: column;
     width: 80%;
     height: 95vh;
+    justify-content: center;
 }
 .outermost button{
     padding: 10px;
@@ -35,7 +36,7 @@
     flex: 1;
     margin-left: 5.5%;
     margin-right: 5.5%;
-    margin-top: 1%;
+    margin-top: 2%;
 }
 .activity img{
     width: 70vw;

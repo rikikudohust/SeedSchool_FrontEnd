@@ -10,12 +10,12 @@
     background-color: rgb(240, 240, 240);
     z-index: 1;
 }
-.img{
-    border-radius: 50%;
-}
+
 .controller img{
-    width: 100%;
+    width: 70%;
     height: auto;
+    margin: 10%;
+    border-radius: 50%;
 }
 .controller h1{
     margin-top: 0px;

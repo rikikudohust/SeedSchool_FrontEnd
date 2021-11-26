@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import classes from '../../assets/CSS/admin/Admin.module.css'
-import Nav from "../UI/Nav";
+import Nav from "../general/Nav";
 import avatar from '../../assets/Icons/defaultavatar.png'
 import Menu from "./Menu";
-import Activities from "./Activities";
-import Anounn from "../General/Anounn";
+import AdminActivities from "./AdminActivities";
 import AdminAnounn from "./AdminAnounn";
 import Classes from "./Classes";
 import TeacherList from "./TeacherList";
@@ -26,7 +25,7 @@ const Admin = props => {
                     Hoạt động chung
                 </button>
                 <button style={{ backgroundColor: require == 2 ? '#E6E6E6' : '#F0F0F0' }} onClick={() => setRequire(2)}>
-                    Thông báo học phí
+                    Thông báo
                 </button>
                 <button style={{ backgroundColor: require == 3 ? '#E6E6E6' : '#F0F0F0' }} onClick={() => setRequire(3)}>
                     Quản lý lớp học
@@ -36,7 +35,7 @@ const Admin = props => {
                 </button>
             </div>
             {require == 0 && <Menu />}
-            {require == 1 && <Activities />}
+            {require == 1 && <AdminActivities />}
             {require == 2 && <AdminAnounn />}
             {require == 3 && <Classes />}
             {require == 4 && <TeacherList />}

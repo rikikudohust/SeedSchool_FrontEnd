@@ -1,6 +1,6 @@
 import { ChatBubbleOutline, Search } from "@mui/icons-material";
 import React from "react";
-import classes from '../../assets/CSS/UI/Nav.module.css'
+import classes from '../../assets/CSS/general/Nav.module.css'
 
 const Nav = props => {
     return <>

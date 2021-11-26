@@ -1,5 +1,5 @@
 import React from "react";
-import classes from '../../assets/CSS/admin/Anounn.module.css'
+import classes from '../../assets/CSS/general/Anounn.module.css'
 import Announcements from '../../assets/DummyData/General/Anounncements'
 
 const Anounn = props => {
