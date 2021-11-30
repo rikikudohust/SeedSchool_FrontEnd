@@ -6,6 +6,7 @@
     margin: 5px;
     cursor: pointer;
     position: relative;
+    background-color: white;
     z-index: 1;
 }
 .container h5{

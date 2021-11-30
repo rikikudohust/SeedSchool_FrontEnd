@@ -1,10 +1,10 @@
 .class_liss{
     background-color: #fff;
-    width: 80%;
+    width: 100%;
     height: 100%;
 }
 .class_liss button{
-    padding: 10px;
+    /* padding: 10px;
     width: 15%;
     height: 50px;
     border-radius: 6px;
@@ -12,12 +12,26 @@
     font-family: 'Courier New', Courier, monospace;
     font-size: large;
     color: #fff;
-    /* background-color: rgb(179, 197, 245); */
     background-color: rgb(0, 185, 56);
     margin-left: 4%;
     margin-top: 1%;
-    cursor: pointer;
-}
+    cursor: pointer;  */
+
+    /*border-radius: 50%;
+    background-color: rgb(212, 212, 212);
+    width: 50px;
+    height: 50px;
+    border: none;
+    font-size: 50px;
+    font-weight: lighter;
+	bottom: 10px;
+    right: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    position: fixed;
+    cursor: pointer;*/
+} 
 
 .header_class_liss{
     padding: 20px;
@@ -34,20 +48,26 @@
 
 .class_list_body{
     display: flex;
-    justify-content: space-around; 
+    justify-content: flex-start; 
     flex-wrap: wrap; 
 }
 
 .class_list_body .item{
-    width: 300px;
-    height: 430px;
-    margin: 2%;
-    border: 5px solid #000;
+    width: 280px;
+    height: 400px;
+    margin-top: 1%;
+    margin-left: 1%;
+    margin-bottom: 2%;
+    /* margin: ;
+    border: 5px solid #000; */
     border-radius: 3px;
+    box-shadow: 3px 3px #ccc;
+    float: left;
 }
 
 .class_list_body img{
-    width: 100%;
+    width: 98%;
+    margin-top: 2%;
     display: block;
 }
 
@@ -58,8 +78,8 @@
 .content_item{
     background-color: #fff;
     display: inline-block;
-    width: 300px;
-    padding-bottom: 10px;
+    width: 280px;
+    /* padding-bottom: 10px; */
 }
 
 .class_name{
@@ -89,7 +109,7 @@
     padding-top: 10px;
     width: 136px;
     height: 28px;
-    background-color: #000;
+    background-color: #1877f2;
     color: #fff;
     margin-left: 10px;
     font-family: sans-serif;
@@ -100,4 +120,8 @@
 .content_item_btn:hover{
     color: #000;
     background-color: #ccc;
+}
+
+.icon{
+
 }

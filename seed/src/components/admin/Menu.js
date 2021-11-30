@@ -6,53 +6,54 @@ import Day from "./Day";
 import EditMenu from "./EditMenu";
 
 const Menu = props => {
-    const [isEditMenu, setIsEditMenu] = useState(0)
+    const [updateByWeek, setUpdateByWeek] = useState(1)
 
-    const onTurnOnEditMenu = () => {
-        setIsEditMenu(1)
-    }
-
-    const onTurnOffEditMenu = () => {
-        setIsEditMenu(0)
+    const selectChange = () => {
+        var e = document.getElementById("id");
+        if (e.options[e.selectedIndex].text === "Update by week") setUpdateByWeek(1)
+        if (e.options[e.selectedIndex].text === "Update by month") setUpdateByWeek(0)
     }
 
     return <>
-        {isEditMenu == 1 && <EditMenu onTurnOffEditMenu={onTurnOffEditMenu} />}
         <div className={classes.container}>
+
             <div className={classes.title}>
-                <h2>Update by week</h2>
+                <select onChange={selectChange} id="id">
+                    <option>Update by week</option>
+                    <option>Update by month</option>
+                </select>
                 <button>Apply</button>
             </div>
 
-            <div className={classes.week}>
-                {Week.map(element =>
-                    <Day onTurnOnEditMenu={onTurnOnEditMenu} day={element}></Day>)}
-            </div>
+            {
+                updateByWeek == 1 && <div className={classes.week}>
+                    {Week.map(element =>
+                        <Day onTurnOnEditMenu={props.onTurnOnEditMenu} day={element}></Day>)}
+                </div>
+            }
 
-            <div className={classes.title}>
-                <h2>Update by month</h2>
-                <button>Apply</button>
-            </div>
-
-            <div className={classes.month}>
-                <div className={classes.week}>
-                    {Month.filter(day => 0 <= day.id && day.id < 7).map(element =>
-                        <Day onTurnOnEditMenu={onTurnOnEditMenu} day={element}></Day>)}
+            {
+                updateByWeek == 0 &&
+                <div className={classes.month}>
+                    <div className={classes.week}>
+                        {Month.filter(day => 0 <= day.id && day.id < 7).map(element =>
+                            <Day onTurnOnEditMenu={props.onTurnOnEditMenu} day={element}></Day>)}
+                    </div>
+                    <div className={classes.week}>
+                        {Month.filter(day => 7 <= day.id && day.id < 14).map(element =>
+                            <Day onTurnOnEditMenu={props.onTurnOnEditMenu} day={element}></Day>)}
+                    </div>
+                    <div className={classes.week}>
+                        {Month.filter(day => 14 <= day.id && day.id < 21).map(element =>
+                            <Day onTurnOnEditMenu={props.onTurnOnEditMenu} day={element}></Day>)}
+                    </div>
+                    <div className={classes.week}>
+                        {Month.filter(day => 21 <= day.id && day.id < 28).map(element =>
+                            <Day onTurnOnEditMenu={props.onTurnOnEditMenu} day={element}></Day>)}
+                    </div>
                 </div>
-                <div className={classes.week}>
-                    {Month.filter(day => 7 <= day.id && day.id < 14).map(element =>
-                        <Day onTurnOnEditMenu={onTurnOnEditMenu} day={element}></Day>)}
-                </div>
-                <div className={classes.week}>
-                    {Month.filter(day => 14 <= day.id && day.id < 21).map(element =>
-                        <Day onTurnOnEditMenu={onTurnOnEditMenu} day={element}></Day>)}
-                </div>
-                <div className={classes.week}>
-                    {Month.filter(day => 21 <= day.id && day.id < 28).map(element =>
-                        <Day onTurnOnEditMenu={onTurnOnEditMenu} day={element}></Day>)}
-                </div>
-            </div>
-        </div>
+            }
+        </div >
     </>
 }
 

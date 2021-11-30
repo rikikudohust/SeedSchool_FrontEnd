@@ -1,11 +1,17 @@
-import React from "react";
+import { AddOutlined, Create } from "@mui/icons-material";
+import React, { useState } from "react";
 import classes from '../../assets/CSS/admin/Classes.module.css'
+import button from '../../assets/CSS/general/AddButton.module.css'
 import Teachers from '../../assets/DummyData/Admin/Teachers'
+import AddButton from "../general/AddButton";
+import AddTeacher from "./AddTeacher";
 
-const TeacherList = () => {
+const TeacherList = props => {
     return <>
         <div className={classes.class_liss}>
-            <button>Thêm giáo viên</button>
+            <button className={button.btn} onClick={props.addTeacher} >
+                <Create />
+            </button>
             <div className={classes.class_list_body}>
                 {Teachers.map(element =>
                     <div className={classes.item}>
