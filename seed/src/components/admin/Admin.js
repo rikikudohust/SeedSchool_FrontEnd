@@ -11,6 +11,7 @@ import { Accessibility, Campaign, FoodBank, Group, PeopleAlt } from "@mui/icons-
 import EditMenu from "./EditMenu";
 import AddTeacher from "./AddTeacher";
 import AddClass from "./AddClass";
+import AddActivities from "./AddActivities";
 
 
 const Admin = props => {
@@ -18,31 +19,23 @@ const Admin = props => {
     const [require, setRequire] = useState(0)
     const [addingTeacher, setAddingTeacher] = useState(0)
     const [addingClass, setAddingClass] = useState(0)
+    const [addingActivities, setAddingActivities] = useState(0)
 
-    const addClass = () => {
-        setAddingClass(1)
-    }
+    const addClass = () => setAddingClass(1)
 
-    const closeAddClass = () => {
-        setAddingClass(0)
-    }
+    const closeAddClass = () => setAddingClass(0)
 
-    const onTurnOnEditMenu = () => {
-        setIsEditMenu(1)
-    }
+    const onTurnOnEditMenu = () => setIsEditMenu(1)
 
-    const onTurnOffEditMenu = () => {
-        setIsEditMenu(0)
-    }
+    const onTurnOffEditMenu = () => setIsEditMenu(0)
 
-    const addTeacher = () => {
-        setAddingTeacher(1)
-    }
+    const addTeacher = () => setAddingTeacher(1)
 
-    const closeAddTeacher = () => {
-        setAddingTeacher(0)
-    }
+    const closeAddTeacher = () => setAddingTeacher(0)
 
+    const addActivities = () => setAddingActivities(1)
+
+    const closeAddActivities = () => setAddingActivities(0)
 
     return <>
         <div className={classes.container}>
@@ -70,13 +63,14 @@ const Admin = props => {
                 </button>
             </div>
             {isEditMenu == 1 && <EditMenu onTurnOffEditMenu={onTurnOffEditMenu} />}
+            {addingActivities == 1 && <AddActivities closeAddActivities={closeAddActivities} />}
             {addingClass == 1 && <AddClass closeAddClass={closeAddClass} />}
             {addingTeacher == 1 && <AddTeacher closeAddTeacher={closeAddTeacher} />}
 
             <div className={classes.additional}>
                 <Nav avatar={avatar} />
                 {require == 0 && <Menu onTurnOnEditMenu={onTurnOnEditMenu} />}
-                {require == 1 && <AdminActivities />}
+                {require == 1 && <AdminActivities addActivities={addActivities} />}
                 {require == 2 && <AdminAnounn />}
                 {require == 3 && <Classes addClass={addClass} />}
                 {require == 4 && <TeacherList addTeacher={addTeacher} />}

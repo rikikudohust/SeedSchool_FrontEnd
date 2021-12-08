@@ -1,5 +1,7 @@
+import { Create } from "@mui/icons-material";
 import React from "react";
 import classes from '../../assets/CSS/general/Activities.module.css'
+import button from '../../assets/CSS/general/AddButton.module.css'
 import Activities from "../general/Activities";
 import AddButton from "../general/AddButton";
 
@@ -10,7 +12,9 @@ const AdminActivities = props => {
         <div className={classes.outermost}>
             <Activities />
         </div>
-        <AddButton />
+        <button className={button.btn} onClick={props.addActivities} >
+            <Create />
+        </button>
     </>
 
 }

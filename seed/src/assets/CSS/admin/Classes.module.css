@@ -61,14 +61,17 @@
     /* margin: ;
     border: 5px solid #000; */
     border-radius: 3px;
-    box-shadow: 3px 3px #ccc;
+    box-shadow:3px 3px 3px 3px #ccc;
     float: left;
 }
 
 .class_list_body img{
-    width: 98%;
+    width: 96%;
+    height: 50%;
     margin-top: 2%;
+    margin-left: 2%;
     display: block;
+    object-fit: cover;
 }
 
 .class_list_body img:hover{
