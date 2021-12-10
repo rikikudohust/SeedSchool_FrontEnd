@@ -3,13 +3,22 @@ import classes from '../../assets/CSS/admin/Admin.module.css'
 import Nav from "../general/Nav";
 import TeachersActivities from "./TeachersActivities";
 import Calendar from "./Calendar";
+import ProfileTeacher from '../general/ProfileTeacher'
 import avatar from '../../assets/Icons/teacher.jpg'
 import { CalendarToday, FoodBank, Payment, Accessibility, Group, Check } from "@mui/icons-material";
 import StudentList from "./StudentList";
+import AddCheck from './AddCheck'
 
 const Teachers = props => {
 
-    const [require, setRequire] = useState(0)
+    const [check, setCheck] = useState(0)
+    const [require, setRequire] = useState(4)
+
+    const onProfile = () => setRequire(4)
+
+    const onCheck = () => setCheck(1)
+
+    const closeAddCheck = () => setCheck(0)
 
     return <>
         <div className={classes.container}>
@@ -33,12 +42,15 @@ const Teachers = props => {
                 </button>
             </div>
 
+            {check == 1 && <AddCheck closeAddCheck={closeAddCheck} />}
+
             <div className={classes.additional}>
-                <Nav avatar={avatar} />
+                <Nav avatar={avatar} onProfile={onProfile} />
                 {/* {require == 0 && <Menu />*/}
-                {require == 1 && <Calendar />}
+                {require == 1 && <Calendar onCheck={onCheck} />}
                 {require == 2 && <TeachersActivities />}
                 {require == 3 && <StudentList />}
+                {require == 4 && <ProfileTeacher />}
             </div>
         </div>
     </>

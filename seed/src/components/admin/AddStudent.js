@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classes from '../../assets/CSS/admin/AddTeacher.module.css'
 import noFileChosenYet from '../../assets/Icons/nofilechosenyet.png'
 
-const AddTeacher = props => {
+const AddStudent = props => {
     const [avatar, setAvatar] = useState(noFileChosenYet);
 
     const onChange = (event) => {
@@ -20,7 +20,7 @@ const AddTeacher = props => {
     }
 
     return <>
-        <div className={classes.popup} onClick={props.closeAddTeacher} />
+        <div className={classes.popup} onClick={props.closeAddStudent} />
         <div className={classes.container}>
             <div className={classes.left}>
                 <div className={classes.img_place}>
@@ -29,7 +29,7 @@ const AddTeacher = props => {
                 <input type="file" onChange={onChange} />
             </div>
             <div className={classes.right}>
-                <h2>Thêm giáo viên</h2>
+                <h2>Thêm học sinh</h2>
                 <input type="text" placeholder="Họ và tên" />
                 <input type="text" placeholder="Gmail" />
                 <input type="text" placeholder="Mật khẩu" />
@@ -41,4 +41,4 @@ const AddTeacher = props => {
     </>
 }
 
-export default AddTeacher
+export default AddStudent

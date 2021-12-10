@@ -33,7 +33,7 @@ const AddActivities = props => {
                 <textarea placeholder="Nội dung hoạt động"></textarea>
                 <div style={{ width: "48%" }}>
                     <div className={classes.img_place}>
-                        <img src={avatar} alt="here" />
+                        <img src={avatar} />
                     </div>
                     <input type="file" onChange={onChange} />
                 </div>

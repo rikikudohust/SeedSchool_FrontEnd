@@ -12,7 +12,7 @@ const Nav = props => {
                 <Search className={classes.icon} />
                 <input placeholder="Search" />
             </div>
-            <img src={props.avatar} />
+            <img src={props.avatar} onClick={props.onProfile} />
         </div>
     </>
 }
