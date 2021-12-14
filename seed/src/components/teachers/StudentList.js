@@ -7,7 +7,7 @@ import Students from '../../assets/DummyData/Teachers/StudentList'
 const StudentList = props => {
     return <>
         <div className={classes.class_liss}>
-            <button className={button.btn} onClick={props.addTeacher} >
+            <button className={button.btn} onClick={props.onAddStudent} >
                 <Create />
             </button>
             <div className={classes.class_list_body}>

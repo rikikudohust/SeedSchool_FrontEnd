@@ -5,20 +5,28 @@ import TeachersActivities from "./TeachersActivities";
 import Calendar from "./Calendar";
 import ProfileTeacher from '../general/ProfileTeacher'
 import avatar from '../../assets/Icons/teacher.jpg'
-import { CalendarToday, FoodBank, Payment, Accessibility, Group, Check } from "@mui/icons-material";
+import { CalendarToday, FoodBank, Payment, Accessibility, Group, Check, Create } from "@mui/icons-material";
 import StudentList from "./StudentList";
 import AddCheck from './AddCheck'
+import AddStudent from "./AddStudent";
+import CreateClass from "./CreateClass";
+import TimeTable from "../general/TimeTable";
 
 const Teachers = props => {
 
     const [check, setCheck] = useState(0)
-    const [require, setRequire] = useState(4)
+    const [require, setRequire] = useState(5)
+    const [addingStudent, setAddingStudent] = useState(0)
 
-    const onProfile = () => setRequire(4)
+    const onProfile = () => setRequire(5)
 
     const onCheck = () => setCheck(1)
 
     const closeAddCheck = () => setCheck(0)
+
+    const onAddStudent = () => setAddingStudent(1)
+
+    const closeAddStudent = () => setAddingStudent(0)
 
     return <>
         <div className={classes.container}>
@@ -37,20 +45,26 @@ const Teachers = props => {
                     <h4 style={{ color: require == 2 ? '#FFF' : '#C0C0C0' }}>Hoạt động chung</h4>
                 </button>
                 <button style={{ backgroundColor: require == 3 ? '#1877f2' : '#FFF' }} onClick={() => setRequire(3)}>
-                    <Group style={{ color: require == 3 ? '#FFF' : '#1877f2' }} className={classes.icon} />
-                    <h4 style={{ color: require == 3 ? '#FFF' : '#C0C0C0' }}>Quản lý lớp học</h4>
+                    <Create style={{ color: require == 3 ? '#FFF' : '#1877f2' }} className={classes.icon} />
+                    <h4 style={{ color: require == 3 ? '#FFF' : '#C0C0C0' }}>Tạo mới lớp học</h4>
+                </button>
+                <button style={{ backgroundColor: require == 4 ? '#1877f2' : '#FFF' }} onClick={() => setRequire(4)}>
+                    <Group style={{ color: require == 4 ? '#FFF' : '#1877f2' }} className={classes.icon} />
+                    <h4 style={{ color: require == 4 ? '#FFF' : '#C0C0C0' }}>Quản lý lớp học</h4>
                 </button>
             </div>
 
             {check == 1 && <AddCheck closeAddCheck={closeAddCheck} />}
+            {addingStudent == 1 && <AddStudent closeAddStudent={closeAddStudent} />}
 
             <div className={classes.additional}>
                 <Nav avatar={avatar} onProfile={onProfile} />
-                {/* {require == 0 && <Menu />*/}
+                {require == 0 && <TimeTable />}
                 {require == 1 && <Calendar onCheck={onCheck} />}
                 {require == 2 && <TeachersActivities />}
-                {require == 3 && <StudentList />}
-                {require == 4 && <ProfileTeacher />}
+                {require == 3 && <CreateClass />}
+                {require == 4 && <StudentList onAddStudent={onAddStudent} />}
+                {require == 5 && <ProfileTeacher />}
             </div>
         </div>
     </>
