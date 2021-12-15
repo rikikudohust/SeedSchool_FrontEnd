@@ -10,13 +10,15 @@ import StudentList from "./StudentList";
 import AddCheck from './AddCheck'
 import AddStudent from "./AddStudent";
 import CreateClass from "./CreateClass";
-import TimeTable from "../general/TimeTable";
+import TimeTable from "./TeachersTimeTable";
+import AddTimeTable from "./AddTimeTable"
 
 const Teachers = props => {
 
     const [check, setCheck] = useState(0)
     const [require, setRequire] = useState(5)
     const [addingStudent, setAddingStudent] = useState(0)
+    const [addingTimeTable, setAddingTimeTable]= useState(0)
 
     const onProfile = () => setRequire(5)
 
@@ -27,6 +29,10 @@ const Teachers = props => {
     const onAddStudent = () => setAddingStudent(1)
 
     const closeAddStudent = () => setAddingStudent(0)
+
+    const onAddTimeTable=()=> setAddingTimeTable(1)
+
+    const closeAddTimeTable=()=> setAddingTimeTable(0)
 
     return <>
         <div className={classes.container}>
@@ -56,10 +62,11 @@ const Teachers = props => {
 
             {check == 1 && <AddCheck closeAddCheck={closeAddCheck} />}
             {addingStudent == 1 && <AddStudent closeAddStudent={closeAddStudent} />}
+            {addingTimeTable== 1&& <AddTimeTable closeAddTimeTable={closeAddTimeTable}/>}
 
             <div className={classes.additional}>
                 <Nav avatar={avatar} onProfile={onProfile} />
-                {require == 0 && <TimeTable />}
+                {require == 0 && <TimeTable onAddTimeTable={onAddTimeTable}/>}
                 {require == 1 && <Calendar onCheck={onCheck} />}
                 {require == 2 && <TeachersActivities />}
                 {require == 3 && <CreateClass />}

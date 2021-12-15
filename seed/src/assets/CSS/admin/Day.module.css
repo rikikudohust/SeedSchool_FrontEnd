@@ -1,25 +1,34 @@
 .container{
-    width: 13%;
-    height: 180px;
-    border-radius: 6px;
-    border: 5px solid rgb(219, 217, 217);
-    margin: 5px;
-    cursor: pointer;
-    position: relative;
-    background-color: white;
-    z-index: 1;
+    display: flex;
 }
-.container h5{
+.food{
+    display: flex;
+    flex-direction: column;
+}
+.place{
+    width: 10vw;
+    height: 20vh;
+    border: 6px;
+    margin-left: 20px;
+    border: 3px solid black;
+}
+.food img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.container h3{
     font-weight: 50;
+    margin-left: 20px;
 }
 .scrips{
     z-index: 0;
 }
-.container :hover{
+/* .container :hover{
     background-color: rgb(219, 217, 217);
     z-index: 2;
     width: 100%;
     height: 100%;
     opacity: 0.7;
     position: absolute;
-}
+} */

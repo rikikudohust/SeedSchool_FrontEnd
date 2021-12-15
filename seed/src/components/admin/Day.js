@@ -1,34 +1,61 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classes from '../../assets/CSS/admin/Day.module.css'
 import styled from "styled-components";
 import { Create } from "@mui/icons-material";
 
-const Back = styled.div`
-    opacity: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(63, 63, 63, 0.7);
-    z-index: 2;
-    position: absolute;
-`;
+const day = ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"]
 
 const Day = props => {
-    return <>
-        <div className={classes.container}>
-            <Back>
-                <Create className={classes.icon} onClick={props.onTurnOnEditMenu} />
-            </Back>
-            <div>
-                <h3 className={classes.scrips}>{props.day.day}</h3>
-                <h5 className={classes.scrips}>Breakfast: {props.day.breakfast}</h5>
-                <h5 className={classes.scrips}>Lunch: {props.day.lunch}</h5>
-                <h5 className={classes.scrips}>Dinner: {props.day.dinner}</h5>
-            </div>
+    const [isLoading, setIsLoading] = useState(0)
+    const [food, setFood] = useState([]);
 
+    useEffect(async () => {
+        setIsLoading(true)
+        const response = await fetch('http://127.0.0.1:8000/menus/' + props.id + '/sesion')
+        const data = await response.json()
+        console.log(data)
+        setFood(data)
+        setIsLoading(false)
+    }, [])
+
+
+    const breakfast = food.filter(element => element.sesion == 0);
+    const lunch = food.filter(element => element.sesion == 1);
+    const dinner = food.filter(element => element.sesion == 2);
+
+    return <>
+        <h1>{day[props.id]}</h1>
+        <h2>Bữa sáng</h2>
+        <div className={classes.container}>
+            {breakfast.map(element =>
+                <div className={classes.food}>
+                    <div className={classes.place}>
+                        <img src={`http://127.0.0.1:8000/static/${element.image}`} />
+                    </div>
+                    <h3>{element.name}</h3>
+                </div>)}
+        </div>
+
+        <h2>Bữa trưa</h2>
+        <div className={classes.container}>
+            {lunch.map(element =>
+                <div className={classes.food}>
+                    <div className={classes.place}>
+                        <img src={`http://127.0.0.1:8000/static/${element.image}`} />
+                    </div>
+                    <h3>{element.name}</h3>
+                </div>)}
+        </div>
+
+        <h2>Bữa tối</h2>
+        <div className={classes.container}>
+            {dinner.map(element =>
+                <div className={classes.food}>
+                    <div className={classes.place}>
+                        <img src={`http://127.0.0.1:8000/static/${element.image}`} />
+                    </div>
+                    <h3>{element.name}</h3>
+                </div>)}
         </div>
     </>
 }

@@ -86,12 +86,17 @@ body{
 
 .card{
     background-color: #9ca1b4;
-    width: 20%;
-    height: 45vh;
+    width: 10%;
+    height: 15vh;
     padding: 20px;
+    margin-right: 10px;
     border-radius: 10px;
     color: #fff;
     position: relative;
+}
+
+.card h3{
+    margin-top: 50px;
 }
 
 .card_heart{
@@ -106,6 +111,7 @@ body{
     position: absolute;
     right: 20px;
     top: 15px;
+    cursor: pointer;
 }
 
 .card_img{

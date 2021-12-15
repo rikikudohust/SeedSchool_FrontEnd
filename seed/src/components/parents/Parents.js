@@ -8,6 +8,7 @@ import { CalendarToday, FoodBank, Payment, Accessibility, Campaign, CastForEduca
 import Calendar from "./Calendar";
 import ProfileTeacher from "../general/ProfileTeacher";
 import TimeTable from "../general/TimeTable";
+import Menu from "../admin/Menu";
 
 
 const Parents = props => {
@@ -48,7 +49,7 @@ const Parents = props => {
             </div>
             <div className={classes.additional}>
                 <Nav avatar={avatar} />
-                {/* {require == 0 && <Menu />*/}
+                {require == 0 && <Menu />}
                 {require == 1 && <Calendar />}
                 {require == 2 && <ParentsActivities />}
                 {require == 3 && <ParentsAnounn />}

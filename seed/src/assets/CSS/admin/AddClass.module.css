@@ -23,6 +23,79 @@
     text-align: center;
 }
 
+.pick{
+    display: flex;
+    align-items: center;
+}
+
+.pick h3{
+    margin-left: 20px;
+}
+
+.add_class select{
+    border-radius: 6px;
+    border: 1px #000;
+    height: 50%;
+    margin-left: 20px;
+    padding: 10px 10px;
+}
+
+.time{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.time input{
+    border-radius: 6px;
+    border: 1px solid #000;
+    width: 20%;
+    flex: 2
+}
+.time h4{
+    margin-left: 20px;
+    flex: 1;
+}
+
+.body_cls textarea{
+    width: 80%;
+    height: 20vh;
+    margin-left: 3%;
+}
+
+
+
+
+
+.btn_cls{
+    margin: 5%;
+    width: 80px;
+    height: 32px;
+    font-size: 16px;
+    color: #03c43e;
+    font-weight: 500;
+    font-family: unset;
+    border: 1px solid red;
+    border-radius: 6px;
+    float: right;
+}
+
+.btn_cls:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .avatar_cls{
     width: 18%;
@@ -53,19 +126,3 @@
     border: 1px solid #834545;
 }
 
-.btn_cls{
-    margin: 5%;
-    width: 80px;
-    height: 32px;
-    font-size: 16px;
-    color: #03c43e;
-    font-weight: 500;
-    font-family: unset;
-    border: 1px solid red;
-    border-radius: 6px;
-}
-
-.btn_cls:hover{
-    opacity: 0.6;
-    cursor: pointer;
-}
