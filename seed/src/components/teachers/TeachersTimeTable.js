@@ -8,7 +8,7 @@ const TeachersTimeTable = props => {
         <button className={button.btn} onClick={props.onAddTimeTable} >
             <Create />
         </button>
-        <TimeTable />
+        <TimeTable type={1} />
     </>
 }
 

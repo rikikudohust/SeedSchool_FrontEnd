@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import activities from '../../assets/DummyData/Admin/Activities'
+// import activities from '../../assets/DummyData/Admin/Activities'
 import classes from '../../assets/CSS/general/Activities.module.css'
 import styled from "styled-components";
 import { ArrowLeft, ArrowRight } from "@mui/icons-material";
+import axios from "axios";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -15,6 +16,7 @@ const Wrapper = styled.div`
 
 const Activities = props => {
     const [sliderIndex, setSliderIndex] = useState(0);
+    const [activities, setActivities] = useState([]);
 
     // useEffect(() => {
     //     const timer = setTimeout(() => {
@@ -24,6 +26,16 @@ const Activities = props => {
     //         clearTimeout(timer);
     //     }
     // }, [sliderIndex])
+
+    useEffect(async () => {
+        try {
+            const res = await axios.get("http://127.0.0.1:8000/activities/post");
+            setActivities(res.data);
+            console.log(res.data);
+        } catch {
+            console.log("Error")
+        }
+    }, [])
 
     const clickHandler = type => {
         if (type === "left") {
@@ -41,9 +53,9 @@ const Activities = props => {
             </div>
             <Wrapper sliderIndex={sliderIndex}>
                 {activities.map(element =>
-                    <div className={classes.activity}>
-                        <img src={element.img} />
-                        <button>{element.date}</button>
+                    <div className={classes.activity} onClick={() => props.onOpenActi(element.id)}>
+                        <img src={`http://127.0.0.1:8000/static/${element.image}`} />
+                        <button>{element.eventdate}</button>
                     </div>
                 )}
             </Wrapper>

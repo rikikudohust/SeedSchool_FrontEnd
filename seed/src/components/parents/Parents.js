@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from '../../assets/CSS/admin/Admin.module.css'
 import Nav from "../general/Nav";
 import ParentsAnounn from "./ParentsAnounn";
@@ -7,12 +7,43 @@ import ParentsActivities from "./ParentsActivities";
 import { CalendarToday, FoodBank, Payment, Accessibility, Campaign, CastForEducation, Check } from "@mui/icons-material";
 import Calendar from "./Calendar";
 import ProfileTeacher from "../general/ProfileTeacher";
+import ProfileStudent from "../general/ProfileStudent";
 import TimeTable from "../general/TimeTable";
 import Menu from "../admin/Menu";
-
+import ViewActivities from "./ViewActivities";
+import ViewTeacher from "./ViewTeacher";
+import Comment from "./Comment";
 
 const Parents = props => {
     const [require, setRequire] = useState(0);
+    const [profile, setProfile] = useState(0);
+    const [teacherId, setTeacherId] = useState();
+    const [acti, setActi] = useState(0)
+    const [addingComment, setAddingComment] = useState(0)
+
+    const onProfile = () => {
+        setProfile(1);
+    }
+
+    const closeStudent = () => setProfile(0);
+
+    const onOpenActi = id => setActi(id)
+
+    const onCloseActi = () => setActi(0);
+
+    const onAddComment = () => setAddingComment(1);
+
+    const closeAddComment = () => setAddingComment(0);
+
+    useEffect(async () => {
+        // setIsLoading(true)
+        const response = await fetch("http://127.0.0.1:8000/students/" + localStorage.getItem('id') + "/teachers")
+        const data = await response.json()
+        // setTeacher(data.name)
+        console.log(data.user)
+        setTeacherId(data.user)
+        // setIsLoading(false)
+    }, [])
 
     return <>
         <div className={classes.container}>
@@ -47,15 +78,20 @@ const Parents = props => {
                     <h4 style={{ color: require == 5 ? '#FFF' : '#C0C0C0' }}>Giáo viên chủ nhiệm</h4>
                 </button>
             </div>
+
+            {profile == 1 && <ProfileStudent id={localStorage.getItem('id')} closeStudent={closeStudent} />}
+            {acti != 0 && <ViewActivities id={acti} onCloseActi={onCloseActi} />}
+            {addingComment == 1 && <Comment closeAddComment={closeAddComment} id={teacherId} />}
+
             <div className={classes.additional}>
-                <Nav avatar={avatar} />
+                <Nav avatar={avatar} onProfile={onProfile} />
                 {require == 0 && <Menu />}
                 {require == 1 && <Calendar />}
-                {require == 2 && <ParentsActivities />}
+                {require == 2 && <ParentsActivities onOpenActi={onOpenActi} />}
                 {require == 3 && <ParentsAnounn />}
                 {/* {require == 3 && <Classes />} */}
-                {require == 5 && <ProfileTeacher />}
-                {require == 6 && <TimeTable />}
+                {require == 5 && <ViewTeacher id={teacherId} onAddComment={onAddComment} />}
+                {require == 6 && <TimeTable type={0} />}
             </div>
 
         </div>

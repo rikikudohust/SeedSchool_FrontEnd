@@ -12,17 +12,24 @@ import AddStudent from "./AddStudent";
 import CreateClass from "./CreateClass";
 import TimeTable from "./TeachersTimeTable";
 import AddTimeTable from "./AddTimeTable"
+import ProfileStudent from "../general/ProfileStudent";
+import ViewActivities from "./ViewActivities";
 
 const Teachers = props => {
 
     const [check, setCheck] = useState(0)
     const [require, setRequire] = useState(5)
     const [addingStudent, setAddingStudent] = useState(0)
-    const [addingTimeTable, setAddingTimeTable]= useState(0)
+    const [addingTimeTable, setAddingTimeTable] = useState(0)
+    const [openStudent, setOpenStudent] = useState(0)
+    const [acti, setActi] = useState(0)
 
     const onProfile = () => setRequire(5)
 
-    const onCheck = () => setCheck(1)
+    const onCheck = id => {
+        console.log(id)
+        setCheck(id)
+    }
 
     const closeAddCheck = () => setCheck(0)
 
@@ -30,9 +37,17 @@ const Teachers = props => {
 
     const closeAddStudent = () => setAddingStudent(0)
 
-    const onAddTimeTable=()=> setAddingTimeTable(1)
+    const onAddTimeTable = () => setAddingTimeTable(1)
 
-    const closeAddTimeTable=()=> setAddingTimeTable(0)
+    const closeAddTimeTable = () => setAddingTimeTable(0)
+
+    const onOpenStudent = id => setOpenStudent(id)
+
+    const closeStudent = () => setOpenStudent(0)
+
+    const onOpenActi = id => setActi(id)
+
+    const onCloseActi = () => setActi(0);
 
     return <>
         <div className={classes.container}>
@@ -60,18 +75,20 @@ const Teachers = props => {
                 </button>
             </div>
 
-            {check == 1 && <AddCheck closeAddCheck={closeAddCheck} />}
+            {check != 0 && <AddCheck id={check} closeAddCheck={closeAddCheck} />}
             {addingStudent == 1 && <AddStudent closeAddStudent={closeAddStudent} />}
-            {addingTimeTable== 1&& <AddTimeTable closeAddTimeTable={closeAddTimeTable}/>}
+            {addingTimeTable == 1 && <AddTimeTable closeAddTimeTable={closeAddTimeTable} />}
+            {openStudent != 0 && <ProfileStudent id={openStudent} closeStudent={closeStudent} />}
+            {acti != 0 && <ViewActivities id={acti} onCloseActi={onCloseActi} />}
 
             <div className={classes.additional}>
                 <Nav avatar={avatar} onProfile={onProfile} />
-                {require == 0 && <TimeTable onAddTimeTable={onAddTimeTable}/>}
+                {require == 0 && <TimeTable onAddTimeTable={onAddTimeTable} type={1} />}
                 {require == 1 && <Calendar onCheck={onCheck} />}
-                {require == 2 && <TeachersActivities />}
+                {require == 2 && <TeachersActivities onOpenActi={onOpenActi} />}
                 {require == 3 && <CreateClass />}
-                {require == 4 && <StudentList onAddStudent={onAddStudent} />}
-                {require == 5 && <ProfileTeacher />}
+                {require == 4 && <StudentList onAddStudent={onAddStudent} onOpenStudent={onOpenStudent} />}
+                {require == 5 && <ProfileTeacher id={localStorage.getItem('id')} />}
             </div>
         </div>
     </>

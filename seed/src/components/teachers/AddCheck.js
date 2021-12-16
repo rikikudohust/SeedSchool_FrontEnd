@@ -1,25 +1,65 @@
 import { Save } from "@mui/icons-material";
+import axios from "axios";
 import React, { useState } from "react";
 import classes from '../../assets/CSS/teachers/AddCheck.module.css';
 import noFileChosenYet from '../../assets/Icons/nofilechosenyet.png'
 
-const AddCheck = props => {
+var d = new Date(),
+    month = '' + (d.getMonth() + 1),
+    day = '' + d.getDate(),
+    year = d.getFullYear();
 
+if (month.length < 2)
+    month = '0' + month;
+if (day.length < 2)
+    day = '0' + day;
+
+const formatDate = year + '-' + month + '-' + day;
+
+
+const AddCheck = props => {
+    const [file, setFile] = useState()
     const [avatar, setAvatar] = useState(noFileChosenYet);
+    const [comment, setComment] = useState('');
 
     const onChange = (event) => {
         console.log(event.target.files[0])
-        const file = event.target.files[0]
-        if (file) {
+        const f = event.target.files[0];
+        if (f) {
             const reader = new FileReader();
-            reader.readAsDataURL(file)
+            reader.readAsDataURL(f)
             reader.onload = function () {
                 const result = reader.result;
                 setAvatar(result)
             }
         }
-
+        setFile(event.target.files[0]);
     }
+
+    const onCommentHandle = event => {
+        setComment(event.target.value);
+    }
+
+    const Send = async () => {
+        console.log(formatDate);
+        let data = new FormData();
+        data.append('image', file);
+        const reData = {
+            "comment": comment,
+            "date": formatDate
+        }
+
+        try {
+            const res = await axios.post("http://127.0.0.1:8000/students/" + props.id + "/attendance", data);
+            const reRes = await axios.put("http://127.0.0.1:8000/students/" + props.id + "/attendance", reData);
+            console.log("Success")
+            props.closeAddCheck();
+        }
+        catch {
+            console.log("Error")
+        }
+    }
+
 
     return <>
         <div className={classes.popup} onClick={props.closeAddCheck} />
@@ -31,8 +71,8 @@ const AddCheck = props => {
                 <input type="file" onChange={onChange} />
             </div>
             <div className={classes.right}>
-                <textarea placeholder="Thêm nhận xét"></textarea>
-                <button onClick={props.closeAddCheck}>
+                <textarea placeholder="Thêm nhận xét" onChange={onCommentHandle}></textarea>
+                <button onClick={Send}>
                     <Save />
                     Save
                 </button>

@@ -3,7 +3,7 @@ import classes from '../../assets/CSS/general/Login.module.css'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
-const role = ['admin', 'teachers', 'parents'];
+const role = ['teachers', 'parents', 'admin'];
 
 const Login = prosp => {
 
@@ -21,7 +21,7 @@ const Login = prosp => {
             const res = await axios.post("http://127.0.0.1:8000/login/", data);
             localStorage.setItem('jwt', res.data.jwt);
             localStorage.setItem('id', res.data.id);
-            navigate('/' + role[res.data.role] + '/' + res.data.id);
+            navigate('/' + role[res.data.role - 1] + '/' + res.data.id);
         } catch {
             alert("Wrong email or password")
         }

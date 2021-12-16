@@ -5,7 +5,7 @@ import Activities from "../general/Activities";
 const ParentsActivities = props => {
     return <>
         <div className={classes.outermost}>
-            <Activities />
+            <Activities onOpenActi={props.onOpenActi} />
         </div>
     </>
 

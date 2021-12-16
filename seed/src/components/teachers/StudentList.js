@@ -8,11 +8,13 @@ const StudentList = props => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [Students, setStudents] = useState([]);
+    const [image, setImage] = useState('http://127.0.0.1:8000/static/post_images/default_avatar.png');
 
     useEffect(async () => {
         setIsLoading(true)
-        const response = await fetch('http://127.0.0.1:8000/teachers/'+localStorage.getItem('id')+'/students')
+        const response = await fetch('http://127.0.0.1:8000/teachers/' + localStorage.getItem('id') + '/students')
         const data = await response.json()
+        if (data.image != null) setImage('http://127.0.0.1:8000/static/' + data.image)
         setStudents(data)
         setIsLoading(false)
     }, [])
@@ -25,12 +27,12 @@ const StudentList = props => {
             <div className={classes.class_list_body}>
                 {Students.map(element =>
                     <div className={classes.item}>
-                        <img src={element.class_img} alt="ảnh bé" />
+                        <img src={image} alt="ảnh bé" />
                         <div className={classes.content_item}>
                             <h3 className={classes.class_name}><span>Bé: </span>{element.name}</h3>
                             <p className={classes.class_teacher}><span>Email: </span>{element.email}</p>
                             <p className={classes.class_number}><span>Giới tính: </span>{element.sex}</p>
-                            <a href="" className={classes.content_item_btn}>Thêm thông tin</a>
+                            <button className={classes.content_item_btn} onClick={() => props.onOpenStudent(element.user)}>Thông tin</button>
                         </div>
                     </div>
                 )}

@@ -36,7 +36,7 @@ export default function Calendar(props) {
 
             <div className={classes.list}>
                 {Students.map(element =>
-                    <div className={classes.indie} onClick={props.onCheck}>
+                    <div className={classes.indie} onClick={()=> props.onCheck(element.user)}>
                         <img src={element.class_img} />
                         <h2>{element.name}</h2>
                     </div>)}

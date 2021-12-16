@@ -11,10 +11,13 @@ import ProfileTeacher from './components/general/ProfileTeacher';
 import AddActivities from './components/admin/AddActivities';
 import Page from './components/link/Page'
 import MainPage from './components/general/MainPage';
+import ProfileStudent from './components/general/ProfileStudent';
+import AddCheck from './components/teachers/AddCheck';
 
 function App() {
   return (
     <div>
+      {/* <AddCheck /> */}
       <Page />
     </div>
   );

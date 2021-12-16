@@ -1,8 +1,12 @@
+import axios from "axios";
 import React, { useState } from "react";
 import classes from '../../assets/CSS/admin/AddClass.module.css'
 
 const AddTimeTable = props => {
-    const [day, setDay] = useState()
+    const [day, setDay] = useState();
+    const [start, setStart] = useState(0);
+    const [finish, setFinish] = useState(0);
+    const [title, setTitle] = useState('');
 
     const getDay = event => {
         var e = document.getElementById("id");
@@ -12,6 +16,34 @@ const AddTimeTable = props => {
         if (e.options[e.selectedIndex].text === "Thứ 5") setDay(3)
         if (e.options[e.selectedIndex].text === "Thứ 6") setDay(4)
         if (e.options[e.selectedIndex].text === "Thứ 7") setDay(5)
+    }
+
+    const startHandle = event => {
+        setStart(event.target.value)
+    }
+
+    const finishHandle = event => {
+        setFinish(event.target.value)
+    }
+
+    const titleHandle = event => {
+        setTitle(event.target.value)
+    }
+
+    const Submit = async () => {
+        const data = {
+            "time_start": start,
+            "time_finish": finish,
+            "title": title
+        }
+        try {
+            const res = await axios.post("http://127.0.0.1:8000/teachers/" + localStorage.getItem('id') + "/schedules/" + day, data)
+            console.log(data);
+            console.log(day);
+        } catch {
+            console.log('Error')
+        }
+
     }
 
     return <>
@@ -34,15 +66,15 @@ const AddTimeTable = props => {
             <div className={classes.body_cls}>
                 <div className={classes.time}>
                     <h4 >Bắt đầu</h4>
-                    <input type="number" name="" id="" />
+                    <input type="number" onChange={startHandle} />
                     <h4>Kết thúc</h4>
-                    <input type="number" name="" id="" />
+                    <input type="number" onChange={finishHandle} />
                 </div>
 
                 <p className={classes.title_cls}>Nội dung môn học</p>
-                <textarea type="text" name="" id="" />
-                
-                <button className={classes.btn_cls}>Thêm</button>
+                <textarea type="text" onChange={titleHandle} />
+
+                <button className={classes.btn_cls} onClick={Submit}>Thêm</button>
             </div>
         </div>
     </>

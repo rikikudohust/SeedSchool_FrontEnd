@@ -44,6 +44,7 @@ const AddTeacher = props => {
         try {
             const res = await axios.post("http://127.0.0.1:8000/register/", data);
             console.log("Successful")
+            props.closeAddTeacher();
         } catch {
             alert("Wrong email or password")
         }

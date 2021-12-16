@@ -48,7 +48,7 @@ top: 2px;
 
 .block1 .price * {
 	position: relative;
-	z-index: 10;
+	z-index: 2;
 }
 
 .block1 .price strong {

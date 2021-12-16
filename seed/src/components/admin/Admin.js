@@ -15,6 +15,9 @@ import AddActivities from "./AddActivities";
 import AddAnounn from "./AddAnounn";
 import StudentList from "./StudentList";
 import AddStudent from "./AddStudent";
+import ProfileStudent from "../general/ProfileStudent";
+import ViewActivities from "./ViewActivities";
+import ProfileTeacher from "../general/ProfileTeacher";
 
 
 const Admin = props => {
@@ -25,6 +28,9 @@ const Admin = props => {
     const [addingActivities, setAddingActivities] = useState(0)
     const [addingAnounn, setAddingAnounn] = useState(0)
     const [addingStudent, setAddingStudent] = useState(0)
+    const [openStudent, setOpenStudent] = useState(0)
+    const [acti, setActi] = useState(0)
+    const [openTeacher, setOpenTeacher] = useState(0)
 
     const addClass = () => setAddingClass(1)
 
@@ -44,12 +50,32 @@ const Admin = props => {
 
     const addTeacher = () => setAddingTeacher(1)
 
-    const closeAddTeacher = () => setAddingTeacher(0)
+    const onOpenTeacher = id => setOpenTeacher(id)
+
+    const onOpenStudent = id => setOpenStudent(id)
+
+    const closeStudent = () => setOpenStudent(0)
+
+    const onOpenActi = id => setActi(id)
+
+    const onCloseActi = () => {
+        setRequire(10);
+        setRequire(1);
+        setActi(0);
+    }
+    const closeAddTeacher = () => {
+        setRequire(10);
+        setRequire(4);
+        setAddingTeacher(0);
+    }
 
     const addStudent = () => setAddingStudent(1)
 
-    const closeAddStudent = () => setAddingStudent(0)
-
+    const closeAddStudent = () => {
+        setRequire(10);
+        setRequire(5);
+        setAddingStudent(0)
+    }
     return <>
         <div className={classes.container}>
             <div className={classes.controller}>
@@ -85,15 +111,18 @@ const Admin = props => {
             {addingClass == 1 && <AddClass closeAddClass={closeAddClass} />}
             {addingTeacher == 1 && <AddTeacher closeAddTeacher={closeAddTeacher} />}
             {addingStudent == 1 && <AddStudent closeAddStudent={closeAddStudent} />}
+            {openStudent != 0 && <ProfileStudent id={openStudent} closeStudent={closeStudent} />}
+            {openTeacher != 0 && <ProfileTeacher id={openTeacher} />}
+            {acti != 0 && <ViewActivities id={acti} onCloseActi={onCloseActi} />}
 
             <div className={classes.additional}>
                 <Nav avatar={avatar} />
                 {require == 0 && <Menu onTurnOnEditMenu={onTurnOnEditMenu} />}
-                {require == 1 && <AdminActivities addActivities={addActivities} />}
+                {require == 1 && <AdminActivities addActivities={addActivities} onOpenActi={onOpenActi} />}
                 {require == 2 && <AdminAnounn addAnounn={addAnounn} />}
                 {require == 3 && <Classes addClass={addClass} />}
-                {require == 4 && <TeacherList addTeacher={addTeacher} />}
-                {require == 5 && <StudentList addStudent={addStudent} />}
+                {require == 4 && <TeacherList addTeacher={addTeacher} onOpenTeacher={onOpenTeacher} />}
+                {require == 5 && <StudentList addStudent={addStudent} onOpenStudent={onOpenStudent} />}
             </div>
         </div>
     </>

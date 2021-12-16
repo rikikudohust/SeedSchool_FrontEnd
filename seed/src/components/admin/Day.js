@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import classes from '../../assets/CSS/admin/Day.module.css'
 import styled from "styled-components";
 import { Create } from "@mui/icons-material";
+import button from '../../assets/CSS/general/AddButton.module.css'
 
 const day = ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"]
 
@@ -24,6 +25,9 @@ const Day = props => {
     const dinner = food.filter(element => element.sesion == 2);
 
     return <>
+        <button className={button.btn} onClick={props.addStudent} >
+            <Create />
+        </button>
         <h1>{day[props.id]}</h1>
         <h2>Bữa sáng</h2>
         <div className={classes.container}>

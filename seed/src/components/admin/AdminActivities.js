@@ -10,7 +10,7 @@ const AdminActivities = props => {
 
     return <>
         <div className={classes.outermost}>
-            <Activities />
+            <Activities onOpenActi={props.onOpenActi} />
         </div>
         <button className={button.btn} onClick={props.addActivities} >
             <Create />
