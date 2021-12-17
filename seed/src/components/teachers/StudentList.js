@@ -14,7 +14,6 @@ const StudentList = props => {
         setIsLoading(true)
         const response = await fetch('http://127.0.0.1:8000/teachers/' + localStorage.getItem('id') + '/students')
         const data = await response.json()
-        if (data.image != null) setImage('http://127.0.0.1:8000/static/' + data.image)
         setStudents(data)
         setIsLoading(false)
     }, [])
@@ -27,7 +26,7 @@ const StudentList = props => {
             <div className={classes.class_list_body}>
                 {Students.map(element =>
                     <div className={classes.item}>
-                        <img src={image} alt="ảnh bé" />
+                        <img src={element.avatar == null ? image : "http://127.0.0.1:8000/static" + element.avatar} alt="ảnh bé" />
                         <div className={classes.content_item}>
                             <h3 className={classes.class_name}><span>Bé: </span>{element.name}</h3>
                             <p className={classes.class_teacher}><span>Email: </span>{element.email}</p>

@@ -9,7 +9,7 @@ const TimeTable = props => {
     return <>
         <div className={classes.box}>
             {Day.map(element =>
-                <TimeTableDay id={element} type= {props.type}/>)}
+                <TimeTableDay id={element} type={props.type} closeAddTimeTable={props.closeAddTimeTable} />)}
         </div>
     </>
 }

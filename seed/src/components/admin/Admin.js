@@ -46,8 +46,11 @@ const Admin = props => {
 
     const addActivities = () => setAddingActivities(1)
 
-    const closeAddActivities = () => setAddingActivities(0)
-
+    const closeAddActivities = () => {
+        setRequire(10);
+        setRequire(1);
+        setAddingActivities(0)
+    }
     const addTeacher = () => setAddingTeacher(1)
 
     const onOpenTeacher = id => setOpenTeacher(id)

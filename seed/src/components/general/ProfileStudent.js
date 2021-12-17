@@ -53,10 +53,10 @@ const ProfileStudent = props => {
                     <div className={classes.profile_class}>Lớp: {classs}</div>
                     <div className={classes.profile_age}>Tuổi: {Student.age}</div>
                     <div className={classes.homeroom_teacher}>Giáo viên chủ nhiệm: {teacher}</div>
-                    <div className={classes.address}>Địa chỉ: Trần Duy Hưng, Hà Nội</div>
-                    <div className={classes.name_parent}>Họ tên phụ huynh: Zed</div>
-                    <div className={classes.phone}><i class={classes["ti-mobile"]}></i> 0123456789</div>
-                    <div className={classes.gmail}><i class={classes['ti-email']}></i> {Student.email}</div>
+                    <div className={classes.address}>Địa chỉ: Chưa cập nhật</div>
+                    <div className={classes.name_parent}>Họ tên phụ huynh: Chưa cập nhật</div>
+                    <div className={classes.phone}><i class={classes["ti-mobile"]}></i> Số điện thoại: Chưa cập nhật</div>
+                    <div className={classes.gmail}><i class={classes['ti-email']}></i> Email: {Student.email}</div>
                 </div>
             </div>
         </div>

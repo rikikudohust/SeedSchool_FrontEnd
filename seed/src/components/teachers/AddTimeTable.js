@@ -38,6 +38,7 @@ const AddTimeTable = props => {
         }
         try {
             const res = await axios.post("http://127.0.0.1:8000/teachers/" + localStorage.getItem('id') + "/schedules/" + day, data)
+            props.closeAddTimeTable();
             console.log(data);
             console.log(day);
         } catch {

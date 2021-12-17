@@ -1,19 +1,20 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import classes from '../../assets/CSS/general/ProfileTeacher.module.css'
-import avatar from '../../assets/Icons/teacher.jpg'
+// import avatar from '../../assets/Icons/teacher.jpg'
 
 const ProfileTeacher = props => {
     const [teacher, setTeacher] = useState({});
     const [classs, setClasss] = useState();
     const [comment, setComment] = useState([])
-
+    const [avatar, setAvatar] = useState('http://127.0.0.1:8000/static/post_images/default_avatar.png')
     console.log(props.id)
 
     useEffect(async () => {
         try {
-            const res = await axios.get("http://127.0.0.1:8000/teachers/" + props.id);
+            const res = await axios.get("http://127.0.0.1:8000/teachers/" + props.id + "/update");
             setTeacher(res.data)
+            if (res.data.avatar != null) setAvatar("http://127.0.0.1:8000/static" + res.data.avatar);
             console.log(res.data)
 
             const reRes = await axios.get("http://127.0.0.1:8000/teachers/" + props.id + "/class");

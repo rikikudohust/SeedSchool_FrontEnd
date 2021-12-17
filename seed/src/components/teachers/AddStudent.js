@@ -18,6 +18,7 @@ const AddStudent = props => {
 
         try {
             const res = await axios.put("http://127.0.0.1:8000/teachers/" + localStorage.getItem('id') + "/students", data);
+            props.closeAddStudent();
             console.log(res.data)
         }
         catch {

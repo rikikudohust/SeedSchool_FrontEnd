@@ -1,4 +1,5 @@
 import { AddOutlined, Create } from "@mui/icons-material";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import classes from '../../assets/CSS/admin/Classes.module.css'
 import button from '../../assets/CSS/general/AddButton.module.css'
@@ -13,11 +14,14 @@ const TeacherList = props => {
 
     useEffect(async () => {
         setIsLoading(true)
-        const response = await fetch('http://127.0.0.1:8000/teachers')
-        const data = await response.json()
-        if (data.image != null) setImage('http://127.0.0.1:8000/static/' + data.image)
-        setTeachers(data)
-        setIsLoading(false)
+        try {
+            const res = await axios.get("http://127.0.0.1:8000/teachers/")
+            // const data = await response.json();
+            setTeachers(res.data);
+            setIsLoading(false);
+        } catch {
+            console.log('Error');
+        }
     }, [])
 
     return <>
@@ -29,7 +33,7 @@ const TeacherList = props => {
             <div className={classes.class_list_body}>
                 {Teachers.map(element =>
                     <div className={classes.item}>
-                        <img src={image} alt="ảnh giáo viên" />
+                        <img src={element.avatar == null ? image : "http://127.0.0.1:8000/static/" + element.avatar} alt="ảnh giáo viên" />
                         <div className={classes.content_item}>
                             <h3 className={classes.class_name}><span>Giáo viên: </span>{element.name}</h3>
                             <p className={classes.class_teacher}><span>Email: </span>{element.email}</p>

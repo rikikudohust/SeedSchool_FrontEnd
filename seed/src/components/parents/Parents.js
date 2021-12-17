@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import classes from '../../assets/CSS/admin/Admin.module.css'
 import Nav from "../general/Nav";
 import ParentsAnounn from "./ParentsAnounn";
-import avatar from '../../assets/Icons/momo.jpg'
+// import avatar from '../../assets/Icons/momo.jpg'
 import ParentsActivities from "./ParentsActivities";
 import { CalendarToday, FoodBank, Payment, Accessibility, Campaign, CastForEducation, Check } from "@mui/icons-material";
 import Calendar from "./Calendar";
@@ -20,6 +20,8 @@ const Parents = props => {
     const [teacherId, setTeacherId] = useState();
     const [acti, setActi] = useState(0)
     const [addingComment, setAddingComment] = useState(0)
+    const [avatar, setAvatar] = useState('http://127.0.0.1:8000/static/post_images/default_avatar.png')
+    const [name, setName] = useState('')
 
     const onProfile = () => {
         setProfile(1);
@@ -33,22 +35,33 @@ const Parents = props => {
 
     const onAddComment = () => setAddingComment(1);
 
-    const closeAddComment = () => setAddingComment(0);
+    const closeAddComment = () => {
+        setRequire(10);
+        setRequire(5);
+        setAddingComment(0);
+    }
+
+    useEffect(async () => {
+        const response = await fetch("http://127.0.0.1:8000/students/" + localStorage.getItem('id') + "/update")
+        const data = await response.json()
+        if (data.avatar != null) setAvatar("http://127.0.0.1:8000/static" + data.avatar)
+        setName(data.name)
+    }, [])
 
     useEffect(async () => {
         // setIsLoading(true)
         const response = await fetch("http://127.0.0.1:8000/students/" + localStorage.getItem('id') + "/teachers")
         const data = await response.json()
         // setTeacher(data.name)
-        console.log(data.user)
-        setTeacherId(data.user)
+        console.log(data.user);
+        setTeacherId(data.user);
         // setIsLoading(false)
     }, [])
 
     return <>
         <div className={classes.container}>
             <div className={classes.controller}>
-                <h1>Momo</h1>
+                <h1>{name}</h1>
                 <button style={{ backgroundColor: require == 0 ? '#1877f2' : '#FFF' }} onClick={() => setRequire(0)}>
                     <FoodBank style={{ color: require == 0 ? '#FFF' : '#1877f2' }} className={classes.icon} />
                     <h4 style={{ color: require == 0 ? '#FFF' : '#C0C0C0' }}>Thực đơn</h4>

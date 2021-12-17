@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from '../../assets/CSS/admin/Admin.module.css'
 import Nav from "../general/Nav";
 import TeachersActivities from "./TeachersActivities";
@@ -14,6 +14,7 @@ import TimeTable from "./TeachersTimeTable";
 import AddTimeTable from "./AddTimeTable"
 import ProfileStudent from "../general/ProfileStudent";
 import ViewActivities from "./ViewActivities";
+import axios from "axios";
 
 const Teachers = props => {
 
@@ -23,6 +24,8 @@ const Teachers = props => {
     const [addingTimeTable, setAddingTimeTable] = useState(0)
     const [openStudent, setOpenStudent] = useState(0)
     const [acti, setActi] = useState(0)
+    const [avatar, setAvatar] = useState('http://127.0.0.1:8000/static/post_images/default_avatar.png')
+    const [name, setName] = useState('')
 
     const onProfile = () => setRequire(5)
 
@@ -35,11 +38,18 @@ const Teachers = props => {
 
     const onAddStudent = () => setAddingStudent(1)
 
-    const closeAddStudent = () => setAddingStudent(0)
-
+    const closeAddStudent = () => {
+        setRequire(10);
+        setRequire(4);
+        setAddingStudent(0)
+    }
     const onAddTimeTable = () => setAddingTimeTable(1)
 
-    const closeAddTimeTable = () => setAddingTimeTable(0)
+    const closeAddTimeTable = () => {
+        setRequire(10);
+        setRequire(0);
+        setAddingTimeTable(0)
+    }
 
     const onOpenStudent = id => setOpenStudent(id)
 
@@ -49,10 +59,21 @@ const Teachers = props => {
 
     const onCloseActi = () => setActi(0);
 
+    useEffect(async () => {
+        try {
+            const res = await axios.get("http://127.0.0.1:8000/teachers/" + localStorage.getItem('id') + "/update");
+            console.log(res.data);
+            setName(res.data.name);
+            if (res.data.avatar != null) setAvatar("http://127.0.0.1:8000/static" + res.data.avatar);
+        } catch {
+            console.log('Error');
+        }
+    }, [])
+
     return <>
         <div className={classes.container}>
             <div className={classes.controller}>
-                <h1>Cô gia sư</h1>
+                <h1>{name}</h1>
                 <button style={{ backgroundColor: require == 0 ? '#1877f2' : '#FFF' }} onClick={() => setRequire(0)}>
                     <CalendarToday style={{ color: require == 0 ? '#FFF' : '#1877f2' }} className={classes.icon} />
                     <h4 style={{ color: require == 0 ? '#FFF' : '#C0C0C0' }}>Thời khóa biểu</h4>
@@ -83,7 +104,7 @@ const Teachers = props => {
 
             <div className={classes.additional}>
                 <Nav avatar={avatar} onProfile={onProfile} />
-                {require == 0 && <TimeTable onAddTimeTable={onAddTimeTable} type={1} />}
+                {require == 0 && <TimeTable onAddTimeTable={onAddTimeTable} type={1} closeAddTimeTable={closeAddTimeTable} />}
                 {require == 1 && <Calendar onCheck={onCheck} />}
                 {require == 2 && <TeachersActivities onOpenActi={onOpenActi} />}
                 {require == 3 && <CreateClass />}
