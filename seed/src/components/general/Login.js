@@ -12,6 +12,7 @@ const Login = prosp => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
 
+    //Login
     const Login = async () => {
         const data = {
             "email": email,
@@ -27,6 +28,7 @@ const Login = prosp => {
         }
     }
 
+    //Xu ly input thay doi
     const onEmailHandle = event => {
         setEmail(event.target.value)
     }

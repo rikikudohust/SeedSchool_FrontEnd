@@ -25,6 +25,7 @@ export default function Calendar() {
     const [image, setImage] = useState('http://127.0.0.1:8000/static/post_images/nodata_found.png');
     const [comment, setComment] = useState('');
 
+    //Lay thong tin diem danh ngay luc dau
     useEffect(async () => {
         const data = {
             "date": formatDate
@@ -42,6 +43,7 @@ export default function Calendar() {
 
     }, [])
 
+    //Lay thong tin diem danh khi click vao calendar
     useEffect(async () => {
         const data = {
             "date": date

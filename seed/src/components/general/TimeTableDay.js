@@ -11,12 +11,14 @@ const Type = ["students", "teachers"];
 const TimeTableDay = props => {
     const [schedule, setSchedule] = useState([]);
 
+    //Load data ve tung ngay
     useEffect(async () => {
         const res = await axios.get("http://127.0.0.1:8000/" + Type[props.type] + "/" + localStorage.getItem('id') + "/schedules/" + props.id);
         // console.log(res.data)
         setSchedule(res.data);
     }, [])
 
+    //Xoa 1 mon hoc
     const Erase = async (id) => {
         try {
             await axios.delete("http://127.0.0.1:8000/taskes/" + id + "/");

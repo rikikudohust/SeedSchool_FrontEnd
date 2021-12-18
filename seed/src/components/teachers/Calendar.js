@@ -17,6 +17,7 @@ export default function Calendar(props) {
         console.log(event)
     }
 
+    //Lay danh sach hoc sinh de hien thi
     useEffect(async () => {
         setIsLoading(true)
         const response = await fetch('http://127.0.0.1:8000/teachers/'+localStorage.getItem('id')+'/students')

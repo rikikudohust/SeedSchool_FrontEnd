@@ -10,6 +10,7 @@ const ProfileTeacher = props => {
     const [avatar, setAvatar] = useState('http://127.0.0.1:8000/static/post_images/default_avatar.png')
     console.log(props.id)
 
+    //Load data ve giao vien
     useEffect(async () => {
         try {
             const res = await axios.get("http://127.0.0.1:8000/teachers/" + props.id + "/update");
@@ -27,6 +28,7 @@ const ProfileTeacher = props => {
 
     }, [])
 
+    //Load data ve loi nhan xet
     useEffect(async () => {
         try {
             const res = await axios.get("http://127.0.0.1:8000/teachers/" + props.id + "/thank");
@@ -35,17 +37,6 @@ const ProfileTeacher = props => {
             console.log('Error');
         }
     }, [])
-
-    // useEffect(async () => {
-    //     try {
-    //         const res = await axios.get("http://127.0.0.1:8000/teachers/" + props.id + "/class");
-    //         setClasss(res.data.name)
-    //         console.log(res.data)
-    //     } catch {
-    //         console.log('Error');
-    //     }
-
-    // }, [])
 
     return <>
         <div className={classes.profile}>

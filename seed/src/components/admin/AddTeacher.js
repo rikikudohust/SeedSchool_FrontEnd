@@ -9,6 +9,7 @@ const AddTeacher = props => {
     const [password, setPassword] = useState()
     const [username, setUsername] = useState()
 
+    //Xu ly khi file input anh thay doi
     const onChange = (event) => {
         console.log(event.target.files[0])
         const file = event.target.files[0]
@@ -22,6 +23,7 @@ const AddTeacher = props => {
         }
     }
 
+    //Xu ly khi input thay doi
     const onUsernameHandle = event => {
         setUsername(event.target.value)
     }
@@ -34,6 +36,7 @@ const AddTeacher = props => {
         setPassword(event.target.value)
     }
 
+    //Dang ki moi 1 giao vien
     const Register = async () => {
         const data = {
             "email": email,

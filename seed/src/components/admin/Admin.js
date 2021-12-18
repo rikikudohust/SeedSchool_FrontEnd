@@ -108,6 +108,7 @@ const Admin = props => {
                     <h4 style={{ color: require == 5 ? '#FFF' : '#C0C0C0' }} >Quản lý học sinh</h4>
                 </button>
             </div>
+            
             {isEditMenu == 1 && <EditMenu onTurnOffEditMenu={onTurnOffEditMenu} />}
             {addingActivities == 1 && <AddActivities closeAddActivities={closeAddActivities} />}
             {addingAnounn == 1 && <AddAnounn closeAddAnounn={closeAddAnounn} />}

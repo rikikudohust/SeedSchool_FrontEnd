@@ -10,6 +10,7 @@ const CreateClass = props => {
         setName(event.target.value)
     }
 
+    //Tao moi 1 lop
     const Create = async () => {
         const data = {
             "name": name

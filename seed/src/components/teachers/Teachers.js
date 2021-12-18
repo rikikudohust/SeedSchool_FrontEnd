@@ -59,6 +59,7 @@ const Teachers = props => {
 
     const onCloseActi = () => setActi(0);
 
+    //Lay thong tin giao vien
     useEffect(async () => {
         try {
             const res = await axios.get("http://127.0.0.1:8000/teachers/" + localStorage.getItem('id') + "/update");

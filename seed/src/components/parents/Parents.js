@@ -41,6 +41,7 @@ const Parents = props => {
         setAddingComment(0);
     }
 
+    //Lay thong tin hoc sinh
     useEffect(async () => {
         const response = await fetch("http://127.0.0.1:8000/students/" + localStorage.getItem('id') + "/update")
         const data = await response.json()
@@ -48,6 +49,7 @@ const Parents = props => {
         setName(data.name)
     }, [])
 
+    //Lay thong tin giao vien
     useEffect(async () => {
         // setIsLoading(true)
         const response = await fetch("http://127.0.0.1:8000/students/" + localStorage.getItem('id') + "/teachers")

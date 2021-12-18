@@ -27,6 +27,7 @@ const Slide = styled.div`
 const MainPage = () => {
     const [index, setIndex] = useState(0)
 
+    //Hieu ung truot anh lien tuc
     useEffect(() => {
         const timer = setTimeout(() => {
             setIndex((index + 1) % 5);

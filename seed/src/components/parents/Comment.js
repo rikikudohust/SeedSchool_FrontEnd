@@ -10,6 +10,7 @@ const Comment = props => {
         setComment(event.target.value);
     }
 
+    //Comment ve giao vien
     const Submit = async () => {
         const data = {
             "comment": comment,

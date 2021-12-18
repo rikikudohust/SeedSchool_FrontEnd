@@ -6,6 +6,7 @@ const ViewActivities = props => {
 
     const [activities, setActivities] = useState({});
 
+    //Lay thong tin 1 hoat dong
     useEffect(async () => {
         try {
             const res = await axios.get("http://127.0.0.1:8000/activities/post");
@@ -16,15 +17,6 @@ const ViewActivities = props => {
             console.log("Error")
         }
     }, [])
-
-    const Delete = async () => {
-        try {
-            const res = await axios.delete("http://127.0.0.1:8000/activities/" + props.id + "/");
-            props.onCloseActi();
-        } catch {
-            console.log("Error")
-        }
-    }
 
     return <>
         <div className={classes.popup} onClick={props.onCloseActi} />

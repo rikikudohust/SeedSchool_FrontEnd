@@ -11,6 +11,7 @@ const AddActivities = props => {
     const [date, setDate] = useState();
     const [file, setFile] = useState();
 
+    // Xu ly khi them 1 anh
     const onChange = (event) => {
         console.log(event.target.files[0])
         const f = event.target.files[0];
@@ -25,6 +26,7 @@ const AddActivities = props => {
         setFile(event.target.files[0]);
     }
 
+    // Xu ly thao tac khi nhap
     const onTitHandle = event => {
         setTitle(event.target.value);
     }
@@ -37,6 +39,7 @@ const AddActivities = props => {
         setDate(event.target.value);
     }
 
+    // Call API POST Hoat Dong
     const Submit = async () => {
         let data = new FormData();
         data.append('image', file);

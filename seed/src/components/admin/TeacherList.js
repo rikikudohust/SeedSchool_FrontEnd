@@ -12,6 +12,7 @@ const TeacherList = props => {
     const [Teachers, setTeachers] = useState([]);
     const [image, setImage] = useState('http://127.0.0.1:8000/static/post_images/default_avatar.png');
 
+    //Lay data toan bo giao vien
     useEffect(async () => {
         setIsLoading(true)
         try {
@@ -33,6 +34,7 @@ const TeacherList = props => {
             <div className={classes.class_list_body}>
                 {Teachers.map(element =>
                     <div className={classes.item}>
+                        {/*Xu ly thay doi anh hien thi*/}
                         <img src={element.avatar == null ? image : "http://127.0.0.1:8000/static/" + element.avatar} alt="ảnh giáo viên" />
                         <div className={classes.content_item}>
                             <h3 className={classes.class_name}><span>Giáo viên: </span>{element.name}</h3>

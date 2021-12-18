@@ -9,6 +9,7 @@ const ProfileStudent = props => {
     const [classs, setClasss] = useState()
     const [image, setImage] = useState('http://127.0.0.1:8000/static/post_images/nodata_found.png');
 
+    //Lay thong tin hoc sinh
     useEffect(async () => {
         setIsLoading(true)
         const response = await fetch("http://127.0.0.1:8000/students/" + props.id + "/update")
@@ -18,6 +19,7 @@ const ProfileStudent = props => {
         setIsLoading(false)
     }, [])
 
+    //Lay thong tin giao vien cua hoc sinh do
     useEffect(async () => {
         setIsLoading(true)
         const response = await fetch("http://127.0.0.1:8000/students/" + props.id + "/teachers")
@@ -27,6 +29,7 @@ const ProfileStudent = props => {
         setIsLoading(false)
     }, [Student])
 
+    //Lay thong tin ve lop cua hoc sinh thong qua giao vien
     useEffect(async () => {
         setIsLoading(true)
         const response = await fetch("http://127.0.0.1:8000/teachers/" + teacherId + "/class")

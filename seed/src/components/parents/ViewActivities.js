@@ -6,6 +6,7 @@ const ViewActivities = props => {
 
     const [activities, setActivities] = useState({});
 
+    //Lay thong tin 1 hoat dong
     useEffect(async () => {
         try {
             const res = await axios.get("http://127.0.0.1:8000/activities/post");
@@ -17,6 +18,7 @@ const ViewActivities = props => {
         }
     }, [])
 
+    // Dang ki 1 hoat dong
     const Regis = async () => {
         try {
             const res = await axios.post("http://127.0.0.1:8000/students/" + localStorage.getItem('id') + "/activities/" + props.id);

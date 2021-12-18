@@ -6,6 +6,7 @@ const ViewActivities = props => {
 
     const [activities, setActivities] = useState({});
 
+    //Lay thong tin chi tiet cua 1 hoat dong
     useEffect(async () => {
         try {
             const res = await axios.get("http://127.0.0.1:8000/activities/post");
@@ -17,6 +18,7 @@ const ViewActivities = props => {
         }
     }, [])
 
+    //Xoa 1 hoat dong
     const Delete = async () => {
         try {
             const res = await axios.delete("http://127.0.0.1:8000/activities/" + props.id + "/");

@@ -22,6 +22,7 @@ const AddCheck = props => {
     const [avatar, setAvatar] = useState(noFileChosenYet);
     const [comment, setComment] = useState('');
 
+    //Xu ly khi file input anh thay doi
     const onChange = (event) => {
         console.log(event.target.files[0])
         const f = event.target.files[0];
@@ -40,6 +41,7 @@ const AddCheck = props => {
         setComment(event.target.value);
     }
 
+    //Gui thong tin diem danh
     const Send = async () => {
         console.log(formatDate);
         let data = new FormData();

@@ -12,7 +12,7 @@ const Classes = props => {
     const [Class, setClass] = useState([]);
     const [image, setImage] = useState('http://127.0.0.1:8000/static/post_images/default_group.png');
 
-
+    //Load data tat ca cac lop
     useEffect(async () => {
         setIsLoading(true)
         const response = await fetch('http://127.0.0.1:8000/classes')

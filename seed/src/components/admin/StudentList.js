@@ -11,6 +11,7 @@ const StudentList = props => {
     const [Students, setStudents] = useState([]);
     const [image, setImage] = useState('http://127.0.0.1:8000/static/post_images/default_avatar.png');
 
+    //Lay data toan bo hoc sinh
     useEffect(async () => {
         setIsLoading(true)
         try {
@@ -21,9 +22,6 @@ const StudentList = props => {
         } catch {
             console.log('Error');
         }
-
-        //if (data.image != null) setImage('http://127.0.0.1:8000/static/' + data.image)
-
     }, [])
 
     return <>
@@ -34,6 +32,7 @@ const StudentList = props => {
             <div className={classes.class_list_body}>
                 {Students.map(element =>
                     <div className={classes.item}>
+                        {/*Xu ly thay doi anh hien thi*/}
                         <img src={element.avatar == null ? image : "http://127.0.0.1:8000/static" + element.avatar} alt="ảnh bé" />
                         <div className={classes.content_item}>
                             <h3 className={classes.class_name}><span>Bé: </span>{element.name}</h3>

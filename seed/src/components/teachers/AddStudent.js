@@ -11,6 +11,7 @@ const AddStudent = props => {
         setEmail(event.target.value);
     }
 
+    //Them 1 hoc sinh vao lop
     const Add = async () => {
         const data = {
             "email": email

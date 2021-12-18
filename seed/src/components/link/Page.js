@@ -8,6 +8,7 @@ import Login from '../general/Login'
 
 const Pages = () => {
 
+    //Duong dan cho cac trang
     return <>
         <Routes>
             <Route path='/' element={<MainPage />} />
