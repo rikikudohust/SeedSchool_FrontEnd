@@ -6,10 +6,22 @@
     background-color: rgb(255, 255, 255);
     border-bottom: 2px solid #D0D0D0;
 }
+.user{
+    margin-left: 60%;
+    display: flex;
+    align-items: center;
+}
+.user button{
+    background-color: red;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 10px;
+    cursor: pointer;
+}
 .container img{
-    width: 5%;
+    width: 50%;
     border-radius: 50%;
-    margin-left: 50%;
+    /* margin-left: 50%; */
     cursor: pointer;
 }
 .search{

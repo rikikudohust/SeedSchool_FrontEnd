@@ -16,7 +16,6 @@ const AddStudent = props => {
         const data = {
             "email": email
         }
-
         try {
             const res = await axios.put("http://127.0.0.1:8000/teachers/" + localStorage.getItem('id') + "/students", data);
             props.closeAddStudent();
@@ -25,7 +24,6 @@ const AddStudent = props => {
         catch {
             console.log("Error")
         }
-
     }
 
     return <>

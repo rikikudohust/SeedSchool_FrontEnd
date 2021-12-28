@@ -6,7 +6,6 @@ const EditMenu = props => {
     return <>
         <div className={classes.popup} onClick={props.onTurnOffEditMenu} />
         <div className={classes.container}>
-
             <button>Thêm</button>
         </div>
     </>
