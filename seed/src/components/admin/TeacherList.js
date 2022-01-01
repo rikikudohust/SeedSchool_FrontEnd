@@ -40,7 +40,8 @@ const TeacherList = props => {
                             <h3 className={classes.class_name}><span>Giáo viên: </span>{element.name}</h3>
                             <p className={classes.class_teacher}><span>Email: </span>{element.email}</p>
                             <p className={classes.class_number}><span>Giới tính: </span>{element.sex == 0 ? "Nữ" : "Nam"}</p>
-                            <button className={classes.content_item_btn} onClick={() => props.onOpenTeacher(element.user)} >Thông tin</button>
+                            {/* <button className={classes.content_item_btn} onClick={() => props.onOpenTeacher(element.user)} >Thông tin</button> */}
+                            <a href={`http://localhost:3000/profileTeacher/:${element.user}`} target="_blank" >Thông tin</a>
                             {/* <button className={classes.content_item_btn} onClick={Delete} >Xóa</button> */}
                         </div>
                     </div>

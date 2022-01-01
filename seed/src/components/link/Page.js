@@ -5,6 +5,7 @@ import Teachers from '../teachers/Teachers'
 import Parents from '../parents/Parents'
 import { Routes, Route, Switch } from 'react-router-dom'
 import Login from '../general/Login'
+import AdminProfileTeacher from '../admin/AdminProfileTeacher'
 
 const Pages = () => {
 
@@ -16,6 +17,7 @@ const Pages = () => {
             <Route path='/admin/:adminId' element={<Admin />} />
             <Route path='/teachers/:teacherId' element={<Teachers />} />
             <Route path='/parents/:parentId' element={<Parents />} />
+            <Route path='/profileTeacher/:teacherId' element={<AdminProfileTeacher />} />
         </Routes>
     </>
 
