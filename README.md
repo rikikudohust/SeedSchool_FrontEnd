@@ -1,5 +1,6 @@
 # SeedSchool_FrontEnd
 
+###### cd seed
 ###### npm install
 ###### npm install @mui/material @emotion/react @emotion/styled
 ###### npm install material-ui
