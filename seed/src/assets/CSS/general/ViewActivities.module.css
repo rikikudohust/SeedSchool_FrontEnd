@@ -11,9 +11,9 @@
 }
 
 .container{
-    width: 50vw;
-    height: 70vh;
-    margin-left: 25%;
+    width: 70vw;
+    height: 80vh;
+    margin-left: 15%;
     margin-top: 5%;
     background-color: white;
     border-radius: 6px;
@@ -24,8 +24,21 @@
     z-index: 5;
 }
 
-.container h1{
+.wrap_title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title{
     color: rgb(0, 183, 255);
+    font-size: 50px;
+}
+
+.line{
+    border-bottom:1px solid #676a6e;
+    width: 70%;
+    margin-left: 15%;
 }
 
 .container button{

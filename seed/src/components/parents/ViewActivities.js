@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import classes from '../../assets/CSS/general/ViewActivities.module.css'
 import axios from "axios";
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+
+const text = "# alo \n * 123 \n * 456";
+var trans = "";
 
 const ViewActivities = props => {
 
@@ -28,11 +33,16 @@ const ViewActivities = props => {
         }
     }
 
+    console.log(activities.description)
+    console.log(text)
+
+    trans = activities.description;
+
     return <>
         <div className={classes.popup} onClick={props.onCloseActi} />
         <div className={classes.container} >
-            <h1>{activities.title}</h1>
-            <p>{activities.description}</p>
+            <h1 className={classes.title}>{activities.title}</h1>
+            <ReactMarkdown children={activities.description} remarkPlugins={[remarkGfm]} />
             <button onClick={Regis}>Đăng kí</button>
         </div>
     </>

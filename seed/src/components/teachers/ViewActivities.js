@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import classes from '../../assets/CSS/general/ViewActivities.module.css'
 import axios from "axios";
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 const ViewActivities = props => {
 
@@ -21,8 +23,8 @@ const ViewActivities = props => {
     return <>
         <div className={classes.popup} onClick={props.onCloseActi} />
         <div className={classes.container} >
-            <h1>{activities.title}</h1>
-            <p>{activities.description}</p>
+            <h1 className={classes.title}>{activities.title}</h1>
+            <ReactMarkdown children={activities.description} remarkPlugins={[remarkGfm]} />
         </div>
     </>
 }
