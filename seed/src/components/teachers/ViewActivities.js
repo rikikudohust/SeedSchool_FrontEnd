@@ -23,7 +23,10 @@ const ViewActivities = props => {
     return <>
         <div className={classes.popup} onClick={props.onCloseActi} />
         <div className={classes.container} >
-            <h1 className={classes.title}>{activities.title}</h1>
+            <div className={classes.wrap_title}>
+                <h1 className={classes.title}>{activities.title}</h1>
+            </div>
+            <div className={classes.line} />
             <ReactMarkdown children={activities.description} remarkPlugins={[remarkGfm]} />
         </div>
     </>
