@@ -58,10 +58,11 @@ td:first-child {
 }
 
 .bot {
-  display: flex;
   justify-content: space-between;
   padding: 20px;
   margin: 30px 10px 20px;
+  position: absolute;
+  top: 90%;
 }
 
 .btnHistory {
@@ -124,6 +125,7 @@ td:first-child {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  margin-left: 54vw;
 }
 
 .btnUpdate:hover {

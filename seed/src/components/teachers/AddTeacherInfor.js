@@ -3,24 +3,24 @@ import React, { useState } from "react";
 import styles from "../../assets/CSS/parents/AddStudentInfor.module.css";
 import noFileChosenYet from "../../assets/Icons/nofilechosenyet.png";
 
-const AddStudentInfor = (props) => {
+const AddTeacherInfor = () => {
   const [name, setName] = useState();
-  const [parentName, setParentName] = useState();
-  const [parentNumber, setParentNumber] = useState();
-  const [sex, setSex] = useState(0);
-  const [address, setAddress] = useState();
   const [email, setEmail] = useState();
-  const [age, setAge] = useState();
+  const [sex, setSex] = useState(0);
   const [file, setFile] = useState();
+  const [age, setAge] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
+  const [address, setAddress] = useState();
+  const [achievement, setAchivement] = useState();
 
   const handleName = (event) => {
     setName(event.target.value);
   };
-  const handleParentName = (event) => {
-    setParentName(event.target.value);
+  const handleAchivement = (event) => {
+    setAchivement(event.target.value);
   };
-  const handleParentNumber = (event) => {
-    setParentNumber(event.target.value);
+  const handlePhoneNumber = (event) => {
+    setPhoneNumber(event.target.value);
   };
   const handleSex = (event) => {
     setSex(event.target.value);
@@ -53,12 +53,12 @@ const AddStudentInfor = (props) => {
   const Update = async () => {
     let data = new FormData();
     data.append("user", localStorage.getItem("id"));
+    console.log(localStorage.getItem("id"));
     data.append("avatar", file, file.name);
-    console.log(file.name);
     data.append("name", name);
     data.append("sex", sex);
-    data.append("nameparent", parentName);
-    data.append("phoneparent", parentNumber);
+    data.append("achievement", achievement);
+    data.append("phone", phoneNumber);
     data.append("address", address);
     data.append("age", age);
     data.append("email", email);
@@ -66,7 +66,7 @@ const AddStudentInfor = (props) => {
     console.log();
     try {
       const res = await axios.put(
-        "http://127.0.0.1:8000/students/" + localStorage.getItem("id"),
+        "http://127.0.0.1:8000/teachers/profile",
         data
       );
     } catch {
@@ -92,16 +92,16 @@ const AddStudentInfor = (props) => {
               <input
                 type="text"
                 className={styles.inputControl}
-                placeholder="Họ và tên bố hoặc mẹ"
-                onChange={handleParentName}
+                placeholder="Thành tích"
+                onChange={handleAchivement}
               />
             </div>
             <div className={styles.inputInforStudent}>
               <input
                 type="text"
                 className={styles.inputControl}
-                placeholder="Số điện thoại phụ huynh"
-                onChange={handleParentNumber}
+                placeholder="Số điện thoại"
+                onChange={handlePhoneNumber}
               />
             </div>
             <div className={styles.inputInforStudent}>
@@ -154,4 +154,4 @@ const AddStudentInfor = (props) => {
   );
 };
 
-export default AddStudentInfor;
+export default AddTeacherInfor;

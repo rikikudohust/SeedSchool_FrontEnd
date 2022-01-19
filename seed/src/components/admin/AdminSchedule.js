@@ -6,10 +6,6 @@ const AdminSchedule = () => {
   return (
     <>
       <Schedule />
-      <div className={styles.bot}>
-        <button className={styles.btnHistory}> Xem lịch sử</button>
-        <button className={styles.btnUpdate}>Cập nhật TKB</button>
-      </div>
     </>
   );
 };

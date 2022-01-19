@@ -2,173 +2,167 @@
     font-family: Arial, Helvetica, sans-serif;
 } */
 
-.profile{
-    width: 100%;
-    /* margin-left: 15%;
+.profile {
+  width: 100%;
+  /* margin-left: 15%;
     z-index: 10; */
+  overflow: hidden;
 }
 
-.profile_body{
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
+.profile_body {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
-.introduce_profile{ 
-    color: #fff;
-    background-color: rgb(94, 96, 185);
-    width: 20%;
-    padding: 30px;
-    height: 100vh; 
-    overflow-y: auto;
-    height: 92vh;
-    /* display: flex;
+.introduce_profile {
+  color: #fff;
+  background-color: rgb(94, 96, 185);
+  width: 20%;
+  padding: 30px;
+  height: 100vh;
+  overflow-y: auto;
+  height: 92vh;
+  /* display: flex;
     flex-direction: column;
     justify-content: center; */
 }
 
-.body_img{
-    margin-top: 20px;
-    margin-left: 26px;
-    margin-bottom: 60px;
-    width: 170px;
-    height: 170px;
+.body_img {
+  margin-top: 20px;
+  margin-left: 26px;
+  margin-bottom: 60px;
+  width: 170px;
+  height: 170px;
 }
 
-.introduce_profile img{
-    width: 100%;
-    border-radius: 50%;
+.introduce_profile img {
+  width: 100%;
+  border-radius: 50%;
 }
 
-.profile .contact{
-
+.profile .contact {
 }
 
-.profile_title{
-    font-size: 20px;
-    border-bottom: 2px solid;
-    margin-bottom: 40px;
-    margin-top: 35px;
+.profile_title {
+  font-size: 20px;
+  border-bottom: 2px solid;
+  margin-bottom: 40px;
+  margin-top: 35px;
 }
 
-.profile_content{
-    text-align: left;
-    margin-bottom: 20px;
+.profile_content {
+  text-align: left;
+  margin-bottom: 20px;
 }
 
-.profile .education{
-
+.profile .education {
 }
 
-.profile .position{
-
+.profile .position {
 }
 
-.details_profile{
-    margin-left: 0px;
-    width: 80%;
-    background-color: #e6e7e2;
-    overflow-y: auto;
-    height: 100vh;
+.details_profile {
+  margin-left: 0px;
+  width: 80%;
+  background-color: #e6e7e2;
+  overflow-y: auto;
+  height: 100vh;
 }
 
-.background_name{
-    background-color: #ccc;
-    display: inline-block;
-    width: 100%;
-    border-radius: 8px;
+.background_name {
+  background-color: #ccc;
+  display: inline-block;
+  width: 100%;
+  border-radius: 8px;
 }
 
-.profile .name{
+.profile .name {
 }
 
-.name_teacher{
-    margin-top: 80px;
-    color: #494242;
-    font-weight: 400;
-    border-bottom: 1px solid;
-    padding-bottom: 20px;
-    display: inline-block;
+.name_teacher {
+  margin-top: 80px;
+  color: #494242;
+  font-weight: 400;
+  border-bottom: 1px solid;
+  padding-bottom: 20px;
+  display: inline-block;
 }
 
-.profile .name p{
-    font-size: 24px;
-    color: #494242;
-    margin-bottom: 89px;
+.profile .name p {
+  font-size: 24px;
+  color: #494242;
+  margin-bottom: 89px;
 }
 
-.profile .information{
-    padding: 20px;
+.profile .information {
+  padding: 20px;
 }
 
-.details_title{
-    display: inline-block;
-
+.details_title {
+  display: inline-block;
 }
 
-.details_content{
-    text-align: left;
-    margin: 0px;
-    line-height: 1.4;
+.details_content {
+  text-align: left;
+  margin: 0px;
+  line-height: 1.4;
 }
 
-.class_master{
-    text-align: left;
+.class_master {
+  text-align: left;
 }
 
-.class_master_title{
-
+.class_master_title {
 }
 
-.profile .comment{
-
+.profile .comment {
 }
 
-.comment_title{
-    background-color: #ccc;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-radius: 8px;
-    font-size: 18px;
+.comment_title {
+  background-color: #ccc;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  font-size: 18px;
 }
 
-.comment_content{
-
+.comment_content {
 }
 
-.comment_item{
-    text-align: left;
-    display: flex;
-    margin-top: 20px;
-    width: 100%;
+.comment_item {
+  text-align: left;
+  display: flex;
+  margin-top: 20px;
+  width: 100%;
 }
 
-.avatar_commentator{
-    width: 40px;
-    margin-top: 22px;
+.avatar_commentator {
+  width: 40px;
+  margin-top: 22px;
 }
 
-.avatar_commentator img{
-    width: 100%;
-    border-radius: 50%;
+.avatar_commentator img {
+  width: 100%;
+  border-radius: 50%;
 }
 
-.item_content{
-    padding: 0px;
-    width: 90%;
-    border-radius: 30px;
-    margin-left: 20px;
-    background-color: rgb(114, 102, 87);
+.item_content {
+  padding: 0px;
+  width: 90%;
+  border-radius: 30px;
+  margin-left: 20px;
+  background-color: rgb(114, 102, 87);
 }
 
-.commentator{
-    font-weight: 600;
-    margin-left: 15px;
+.commentator {
+  font-weight: 600;
+  margin-left: 15px;
 }
 
-.content{
-    font-weight: lighter;
-    margin-left: 15px;
+.content {
+  font-weight: lighter;
+  margin-left: 15px;
 }

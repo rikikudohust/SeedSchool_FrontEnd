@@ -4,7 +4,7 @@ import noFileChosenYet from "../../assets/Icons/nofilechosenyet.png";
 import axios from "axios";
 
 const AddTeacher = (props) => {
-  const [avatar, setAvatar] = useState(noFileChosenYet);
+  const [avatar1, setAvatar] = useState(noFileChosenYet);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [username, setUsername] = useState();
@@ -57,17 +57,11 @@ const AddTeacher = (props) => {
     <>
       <div className={classes.popup} onClick={props.closeAddTeacher} />
       <div className={classes.container}>
-        <div className={classes.left}>
-          <div className={classes.img_place}>
-            <img src={avatar} />
-          </div>
-          <input type="file" onChange={onChange} />
-        </div>
         <div className={classes.right}>
           <h2>Thêm giáo viên</h2>
           <input
             type="text"
-            placeholder="Họ và tên"
+            placeholder="Họ và tên giáo viên"
             onChange={onUsernameHandle}
           />
           <input type="text" placeholder="Gmail" onChange={onEmailHandle} />
@@ -76,8 +70,6 @@ const AddTeacher = (props) => {
             placeholder="Mật khẩu"
             onChange={onPasswordHandle}
           />
-          <input type="number" placeholder="Số điện thoại" />
-          <textarea placeholder="Thông tin kèm theo"></textarea>
           <button onClick={Register}>Thêm</button>
         </div>
       </div>

@@ -1,9 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../assets/CSS/admin/AddClass.module.css";
+import axios from "axios";
 
 const AddClass = (props) => {
+  const [total, setTotal] = useState(0);
+  const [nameClass, setNameClass] = useState();
+  const [gvName, setGVName] = useState();
+
+  const handleClassName = (event) => {
+    setNameClass(event.target.value);
+  };
+
+  const handleTeacher = (event) => {
+    setGVName(event.target.value);
+  };
+
+  const handleTotal = (event) => {
+    setTotal(event.target.value);
+  };
+
+  const Register = async () => {
+    const data = {
+      name: nameClass,
+      amount: total,
+      teacher: gvName,
+    };
+    try {
+      const res = await axios.post("http://127.0.0.1:8000/classes/", data);
+    } catch {
+      alert("wrong input");
+    }
+  };
+
   return (
     <>
+      <div className={styles.turnOff} onClick={props.closeAddClass}></div>
       <div className={styles.container_contact1}>
         <div
           className={styles.contact1_pic}
@@ -24,11 +55,17 @@ const AddClass = (props) => {
               className={styles.input1}
               type="text"
               placeholder="Tên giáo viên"
+              onChange={handleTeacher}
             />
             <span className={styles.shadow_input1}></span>
           </div>
           <div className={styles.wrap_input1} className={styles.validate_input}>
-            <input className={styles.input1} type="text" placeholder="Lớp" />
+            <input
+              className={styles.input1}
+              type="text"
+              placeholder="Lớp"
+              onChange={handleClassName}
+            />
             <span className={styles.shadow_input1}></span>
           </div>
           <div className={styles.wrap_input1} className={styles.validate_input}>
@@ -36,6 +73,7 @@ const AddClass = (props) => {
               className={styles.input1}
               type="number"
               placeholder="Sỹ số"
+              onChange={handleTotal}
             />
             <span className={styles.shadow_input1}></span>
           </div>
@@ -47,8 +85,8 @@ const AddClass = (props) => {
             <span className={styles.shadow_input1}></span>
           </div>
           <div className={styles.container_contact1_form_btn}>
-            <button className={styles.contact1_form_btn}>
-              <span> Thêm </span>
+            <button className={styles.contact1_form_btn} onClick={Register}>
+              Thêm
             </button>
           </div>
         </form>

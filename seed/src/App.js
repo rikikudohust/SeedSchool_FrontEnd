@@ -13,12 +13,13 @@ import Page from "./components/link/Page";
 import MainPage from "./components/general/MainPage";
 import ProfileStudent from "./components/general/ProfileStudent";
 import AddCheck from "./components/teachers/AddCheck";
+import AddFood from "./components/admin/AddFood";
 
 function App() {
   return (
     <div>
       {/* <AddCheck /> */}
-      <Parents />
+      <Page />
     </div>
   );
 }

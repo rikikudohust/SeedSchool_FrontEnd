@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import classes from "../../assets/CSS/admin/Admin.module.css";
 import Nav from "../general/Nav";
 import TeachersActivities from "./TeachersActivities";
-import TimeTable from "../general/Schedule";
+import TimeTable from "./TeacherSchedule";
 import ProfileTeacher from "../general/ProfileTeacher";
 import avatar from "../../assets/Icons/teacher.jpg";
 import {
@@ -13,6 +13,7 @@ import {
   Group,
   Check,
   Create,
+  PermIdentity,
 } from "@mui/icons-material";
 import StudentList from "./StudentList";
 import AddCheck from "./AddCheck";
@@ -22,6 +23,7 @@ import AddTimeTable from "./AddTimeTable";
 import ProfileStudent from "../general/ProfileStudent";
 import ViewActivities from "./ViewActivities";
 import axios from "axios";
+import AddTeacherInfor from "./AddTeacherInfor";
 
 const Teachers = (props) => {
   const [check, setCheck] = useState(0);
@@ -126,18 +128,6 @@ const Teachers = (props) => {
             </h4>
           </button>
           <button
-            style={{ backgroundColor: require == 3 ? "#1877f2" : "#FFF" }}
-            onClick={() => setRequire(3)}
-          >
-            <Create
-              style={{ color: require == 3 ? "#FFF" : "#1877f2" }}
-              className={classes.icon}
-            />
-            <h4 style={{ color: require == 3 ? "#FFF" : "#C0C0C0" }}>
-              Tạo mới lớp học
-            </h4>
-          </button>
-          <button
             style={{ backgroundColor: require == 4 ? "#1877f2" : "#FFF" }}
             onClick={() => setRequire(4)}
           >
@@ -147,6 +137,18 @@ const Teachers = (props) => {
             />
             <h4 style={{ color: require == 4 ? "#FFF" : "#C0C0C0" }}>
               Quản lý lớp học
+            </h4>
+          </button>
+          <button
+            style={{ backgroundColor: require == 7 ? "#1877f2" : "#FFF" }}
+            onClick={() => setRequire(7)}
+          >
+            <PermIdentity
+              style={{ color: require == 7 ? "#FFF" : "#1877f2" }}
+              className={classes.icon}
+            />
+            <h4 style={{ color: require == 7 ? "#FFF" : "#C0C0C0" }}>
+              Thêm thông tin cá nhân
             </h4>
           </button>
         </div>
@@ -163,16 +165,9 @@ const Teachers = (props) => {
 
         <div className={classes.additional}>
           <Nav avatar={avatar} onProfile={onProfile} />
-          {require == 0 && (
-            <TimeTable
-              onAddTimeTable={onAddTimeTable}
-              type={1}
-              closeAddTimeTable={closeAddTimeTable}
-            />
-          )}
+          {require == 0 && <TimeTable />}
 
           {require == 2 && <TeachersActivities onOpenActi={onOpenActi} />}
-          {require == 3 && <CreateClass />}
           {require == 4 && (
             <StudentList
               onAddStudent={onAddStudent}
@@ -180,6 +175,7 @@ const Teachers = (props) => {
             />
           )}
           {require == 5 && <ProfileTeacher id={localStorage.getItem("id")} />}
+          {require == 7 && <AddTeacherInfor />}
         </div>
       </div>
     </>

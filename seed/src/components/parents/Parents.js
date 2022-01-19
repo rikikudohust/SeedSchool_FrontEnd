@@ -31,7 +31,7 @@ const Parents = (props) => {
   const [acti, setActi] = useState(0);
   const [addingComment, setAddingComment] = useState(0);
   const [avatar, setAvatar] = useState(
-    "http://127.0.0.1:8000/static/post_images/default_avatar.png"
+    "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
   );
   const [name, setName] = useState("");
   const [SudentInfor, setStudenInfor] = useState(0);

@@ -27,6 +27,7 @@ import ProfileStudent from "../general/ProfileStudent";
 import ViewActivities from "./ViewActivities";
 import ProfileTeacher from "../general/ProfileTeacher";
 import Schedule from "../admin/AdminSchedule";
+import AddFood from "./AddFood";
 
 const Admin = (props) => {
   const [isEditMenu, setIsEditMenu] = useState(0);
@@ -169,7 +170,7 @@ const Admin = (props) => {
               Quản lý học sinh
             </h4>
           </button>
-          <button
+          {/* <button
             style={{ backgroundColor: require == 6 ? "#1877f2" : "#FFF" }}
             onClick={() => setRequire(6)}
           >
@@ -180,10 +181,10 @@ const Admin = (props) => {
             <h4 style={{ color: require == 6 ? "#FFF" : "#C0C0C0" }}>
               Thời khóa biểu
             </h4>
-          </button>
+          </button> */}
         </div>
 
-        {isEditMenu == 1 && <EditMenu onTurnOffEditMenu={onTurnOffEditMenu} />}
+        {isEditMenu == 1 && console.log("asdfasdf")}
         {addingActivities == 1 && (
           <AddActivities closeAddActivities={closeAddActivities} />
         )}
