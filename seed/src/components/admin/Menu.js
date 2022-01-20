@@ -12,7 +12,7 @@ const Menu = (props) => {
   return (
     <>
       {day != 6 && <Day id={day} onTurnOnEditMenu={props.onTurnOnEditMenu} />}
-      {day == 6 &&
+      {/* {day == 6 &&
         Week.map((element) => (
           <div className={classes.block1} onClick={() => setDay(element.id)}>
             <img src={element.img} width="1600px" height="250px" alt="" />
@@ -20,7 +20,20 @@ const Menu = (props) => {
               <span className={classes.weekDay}>{element.day}</span>
             </span>
           </div>
-        ))}
+        ))} */}
+      {day == 6 &&
+        <div className={classes.container}>
+          {Week.map((element) => (
+            <div className={classes.block} onClick={() => setDay(element.id)}>
+              <div className={classes.hover} >
+                <h1>{element.day}</h1>
+              </div>
+              <img src={element.img} />
+            </div>
+          ))}
+
+        </div>
+      }
     </>
   );
 };

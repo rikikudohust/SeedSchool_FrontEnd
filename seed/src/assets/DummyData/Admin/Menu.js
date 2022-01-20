@@ -1,9 +1,9 @@
-import img0 from './ImageMenu/blur_img1.jpg'
-import img1 from './ImageMenu/blur_img2.jpg'
-import img2 from './ImageMenu/blur_img3.jpg'
-import img3 from './ImageMenu/blur4.jpg'
-import img4 from './ImageMenu/blur5.jpg'
-import img5 from './ImageMenu/blur6.jpg'
+import img0 from './ImageMenu/monday.jpg'
+import img1 from './ImageMenu/tuesday.jpg'
+import img2 from './ImageMenu/wednesday.jpg'
+import img3 from './ImageMenu/thusday.jpg'
+import img4 from './ImageMenu/friday.jpg'
+import img5 from './ImageMenu/saturday.jpg'
 
 const Menu = [
     {

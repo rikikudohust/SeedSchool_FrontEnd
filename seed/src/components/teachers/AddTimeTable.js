@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import classes from '../../assets/CSS/admin/AddClass.module.css'
+import classes from '../../assets/CSS/teachers/AddTimeTable.module.css'
 
 const AddTimeTable = props => {
     const [day, setDay] = useState();
@@ -50,7 +50,7 @@ const AddTimeTable = props => {
 
     return <>
         <div className={classes.popup} onClick={props.closeAddTimeTable} />
-        <div className={classes.add_class}>
+        {/* <div className={classes.add_class}>
             <h1 className={classes.content_cls}>Thêm thời khóa biểu</h1>
             <div className={classes.pick}>
                 <h3> Chọn ngày</h3>
@@ -77,6 +77,43 @@ const AddTimeTable = props => {
                 <textarea type="text" onChange={titleHandle} />
 
                 <button className={classes.btn_cls} onClick={Submit}>Thêm</button>
+            </div>
+        </div> */}
+        <div className={classes.black2}>
+            <div className={classes.update}>
+                <div className={classes.title_update}>Cập nhật thời khóa biểu</div>
+
+                <form action="" className={classes.form_update}>
+                    <div className={classes.date}>
+                        <div className={classes.date}>Thứ 2</div>
+                        <div className={classes.date}>Thứ 3</div>
+                        <div className={classes.date}>Thứ 4</div>
+                        <div className={classes.date}>Thứ 5</div>
+                        <div className={classes.date}>Thứ 6</div>
+                    </div>
+                    <input className={classes.ip_update} placeholder="Thể dục" type="text" />
+                    <input className={classes.ip_update} placeholder="Thể dục" type="text" />
+                    <input className={classes.ip_update} placeholder="Thể dục" type="text" />
+                    <input className={classes.ip_update} placeholder="Thể dục" type="text" />
+                    <input className={classes.ip_update} placeholder="Chơi cát" type="text" />
+                    <input className={classes.ip_update} placeholder="Thể dục" type="text" />
+                    <input className={classes.ip_update} placeholder="Viết chữ" type="text" />
+                    <input className={classes.ip_update} placeholder="Vẽ" type="text" />
+                    <input className={classes.ip_update} placeholder="Xếp hình" type="text" />
+                    <input className={classes.ip_update} placeholder="Uýnh nhau" type="text" />
+                    <input className={classes.ip_update} placeholder="Nghỉ trưa" type="text" />
+                    <input className={classes.ip_update} placeholder="Nghỉ trưa" type="text" />
+                    <input className={classes.ip_update} placeholder="Nghỉ trưa" type="text" />
+                    <input className={classes.ip_update} placeholder="Nghỉ trưa" type="text" />
+                    <input className={classes.ip_update} placeholder="Nghỉ trưa" type="text" />
+                    <input className={classes.ip_update} placeholder="Đọc sách" type="text" />
+                    <input className={classes.ip_update} placeholder="Xem phim" type="text" />
+                    <input className={classes.ip_update} placeholder="Uống trà" type="text" />
+                    <input className={classes.ip_update} placeholder="Chơi game" type="text" />
+                    <input className={classes.ip_update} placeholder="Thể dục" type="text" />
+                    <div className={classes.btn_update}>Cập nhật</div>
+                    <div className={classes.btn_out} onClick={props.closeAddTimeTable} >Thoát</div>
+                </form>
             </div>
         </div>
     </>

@@ -30,7 +30,7 @@ const Activities = props => {
     //Load data toan bo hoat dong    
     useEffect(async () => {
         try {
-            const res = await axios.get("http://127.0.0.1:8000/activities/post");
+            const res = await axios.get("http://127.0.0.1:8000/activities");
             setActivities(res.data);
             console.log(res.data);
         } catch {

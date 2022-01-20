@@ -23,6 +23,7 @@ import ViewActivities from "./ViewActivities";
 import ViewTeacher from "./ViewTeacher";
 import Comment from "./Comment";
 import AddStudentInfor from "./AddStudentInfor";
+import CheckIn from './Calendar';
 
 const Parents = (props) => {
   const [require, setRequire] = useState(0);
@@ -70,8 +71,8 @@ const Parents = (props) => {
     // setIsLoading(true)
     const response = await fetch(
       "http://127.0.0.1:8000/students/" +
-        localStorage.getItem("id") +
-        "/teachers"
+      localStorage.getItem("id") +
+      "/teachers"
     );
     const data = await response.json();
     // setTeacher(data.name)
@@ -84,7 +85,7 @@ const Parents = (props) => {
     <>
       <div className={classes.container}>
         <div className={classes.controller}>
-          <h1>{name}</h1>
+          <h1>Parents</h1>
           <button
             style={{ backgroundColor: require == 0 ? "#1877f2" : "#FFF" }}
             onClick={() => setRequire(0)}
@@ -198,6 +199,7 @@ const Parents = (props) => {
           <Nav avatar={avatar} onProfile={onProfile} />
           {require == 0 && <Menu />}
           {require == 6 && <Calendar />}
+          {require == 1 && <CheckIn />}
           {require == 2 && <ParentsActivities onOpenActi={onOpenActi} />}
           {require == 3 && <ParentsAnounn />}
           {require == 7 && <AddStudentInfor />}
