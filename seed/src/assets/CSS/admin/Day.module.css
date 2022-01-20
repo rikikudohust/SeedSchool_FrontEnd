@@ -18,7 +18,7 @@
 
 .foodList {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: 19vw 19vw 19vw 19vw;
   gap: 2rem;
   margin: 3rem auto;
 }
@@ -26,7 +26,7 @@
 .foodList li {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 380px;
   align-items: center;
   border-radius: 2rem;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -55,6 +55,7 @@
   border-top-right-radius: 2rem;
   height: 150px;
   width: 245px;
+  opacity: 0.9;
 }
 
 .titleContainer {

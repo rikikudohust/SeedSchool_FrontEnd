@@ -24,6 +24,7 @@ import ProfileStudent from "../general/ProfileStudent";
 import ViewActivities from "./ViewActivities";
 import axios from "axios";
 import AddTeacherInfor from "./AddTeacherInfor";
+import TeacherAnnoun from "./TeacherAnnoun";
 
 const Teachers = (props) => {
   const [check, setCheck] = useState(0);
@@ -33,7 +34,7 @@ const Teachers = (props) => {
   const [openStudent, setOpenStudent] = useState(0);
   const [acti, setActi] = useState(0);
   const [avatar, setAvatar] = useState(
-    "http://127.0.0.1:8000/static/post_images/default_avatar.png"
+    "https://www.steam-ed.ie/wp-content/uploads/2021/08/Female-Avatar.jpeg"
   );
   const [name, setName] = useState("");
 
@@ -151,6 +152,18 @@ const Teachers = (props) => {
               Thêm thông tin cá nhân
             </h4>
           </button>
+          <button
+            style={{ backgroundColor: require == 8 ? "#1877f2" : "#FFF" }}
+            onClick={() => setRequire(8)}
+          >
+            <PermIdentity
+              style={{ color: require == 8 ? "#FFF" : "#1877f2" }}
+              className={classes.icon}
+            />
+            <h4 style={{ color: require == 8 ? "#FFF" : "#C0C0C0" }}>
+              Thông báo
+            </h4>
+          </button>
         </div>
 
         {check != 0 && <AddCheck id={check} closeAddCheck={closeAddCheck} />}
@@ -176,6 +189,7 @@ const Teachers = (props) => {
           )}
           {require == 5 && <ProfileTeacher id={localStorage.getItem("id")} />}
           {require == 7 && <AddTeacherInfor />}
+          {require == 8 && <TeacherAnnoun />}
         </div>
       </div>
     </>

@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import classes from "../../assets/CSS/general/Anounn.module.css";
-import Announcements from "../../assets/DummyData/General/Anounncements";
 import axios from "axios";
 
-const Anounn = (props) => {
+const TeacherAnnoun = () => {
   const [thongbaochung, setthongbaochung] = useState([]);
   const [news2, setNews] = useState([]);
 
   useEffect(async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/news/");
+      const res = await axios.get("http://127.0.0.1:8000/teachers/person_news");
       // const data = await response.json();
       setthongbaochung(res.data);
     } catch {
@@ -39,4 +38,4 @@ const Anounn = (props) => {
   );
 };
 
-export default Anounn;
+export default TeacherAnnoun;

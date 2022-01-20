@@ -60,6 +60,9 @@ const Classes = (props) => {
             //   </div>
             // </div>
             <div class={classes.item}>
+              {/* <button className={button.btn} onClick={props.addClass}>
+                <Create />
+              </button> */}
               <div class={classes.item_image}>
                 <img
                   src="https://institutlm.com/wp-content/uploads/2016/06/training-icon.png"
@@ -68,9 +71,13 @@ const Classes = (props) => {
               </div>
               <div class={classes.item_name}>Lớp: {element.name}</div>
               <div class={classes.item_position}>
-                Giáo viên: {element.teacher}
+                ID giáo viên: {element.teacher}
               </div>
-              <button> Thông tin chi tiết</button>
+              <div class={classes.item_position}>ID Lớp: {element.id}</div>
+              <button onClick={() => props.addClass(element.id)}>
+                {" "}
+                Thêm giáo viên{" "}
+              </button>
             </div>
           ))}
           <div class={classes.item}>

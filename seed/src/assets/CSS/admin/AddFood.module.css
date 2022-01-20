@@ -43,6 +43,7 @@
   font-family: cursive;
   background: rgba(161, 161, 161, 0.158);
   border-radius: 7px;
+  margin-top: 15px;
 }
 
 .addBtn {
@@ -126,4 +127,8 @@
 
 .fileInput {
   margin-left: 10%;
+}
+
+.selectDay {
+  font-size: 20px;
 }

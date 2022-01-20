@@ -15,6 +15,7 @@ import {
   PermIdentity,
 } from "@mui/icons-material";
 import Calendar from "../general/Schedule";
+import Checkin from "./Calendar";
 import ProfileTeacher from "../general/ProfileTeacher";
 import ProfileStudent from "../general/ProfileStudent";
 import TimeTable from "../general/TimeTable";
@@ -201,6 +202,7 @@ const Parents = (props) => {
           {require == 2 && <ParentsActivities onOpenActi={onOpenActi} />}
           {require == 3 && <ParentsAnounn />}
           {require == 7 && <AddStudentInfor />}
+          {require == 1 && <Checkin />}
           {/* {require == 3 && <Classes />} */}
           {require == 5 && (
             <ViewTeacher id={teacherId} onAddComment={onAddComment} />

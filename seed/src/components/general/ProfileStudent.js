@@ -14,14 +14,21 @@ const ProfileStudent = (props) => {
   //Lay thong tin hoc sinh
   useEffect(async () => {
     setIsLoading(true);
-    const response = await fetch("http://127.0.0.1:8000/students/" + props.id);
-    const data = await response.json();
-    console.log(data);
-    if (data.avatar != null)
-      setImage("http://127.0.0.1:8000/static" + data.avatar);
-    console.log(data.avatar);
-    setStudent(data);
-    setIsLoading(false);
+    try {
+      const response = await fetch(
+        "http://127.0.0.1:8000/students/" + props.id
+      );
+      const data = await response.json();
+
+      console.log(data);
+      if (data.avatar != null)
+        setImage("http://127.0.0.1:8000/static" + data.avatar);
+      console.log(data.avatar);
+      setStudent(data);
+      setIsLoading(false);
+    } catch {
+      alert("err");
+    }
   }, []);
 
   //Lay thong tin giao vien cua hoc sinh do

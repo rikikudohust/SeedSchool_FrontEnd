@@ -48,15 +48,13 @@ const TeacherList = (props) => {
                   src={
                     element.avatar == null
                       ? image
-                      : "http://127.0.0.1:8000/static/" + element.avatar
+                      : "http://127.0.0.1:8000/static" + element.avatar
                   }
                   alt="ảnh giáo viên"
                 />
               </div>
               <div class={classes.item_name}>Giáo viên: {element.name}</div>
-              <div class={classes.item_position}>
-                Giới tính: {element.sex == 0 ? "Nữ" : "Nam"}
-              </div>
+              <div class={classes.item_position}>Id : {element.user}</div>
               <a
                 href={`http://localhost:3000/profileTeacher/:${element.user}`}
                 target="_blank"

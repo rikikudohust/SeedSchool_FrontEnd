@@ -19,11 +19,10 @@
 
 .introduce_profile {
   color: #fff;
-  background-color: rgb(94, 96, 185);
+  background-color: rgba(79, 82, 255, 0.651);
   width: 20%;
   padding: 30px;
-  height: 100vh;
-  overflow-y: auto;
+  height: 110%;
   height: 92vh;
   /* display: flex;
     flex-direction: column;
@@ -165,4 +164,8 @@
 .content {
   font-weight: lighter;
   margin-left: 15px;
+}
+
+.profileImg {
+  border: 3px solid rgb(196, 196, 196);
 }

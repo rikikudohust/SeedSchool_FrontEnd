@@ -7,26 +7,16 @@ const ProfileTeacher = (props) => {
   const [teacher, setTeacher] = useState({});
   const [classs, setClasss] = useState();
   const [comment, setComment] = useState([]);
-  const [avatar, setAvatar] = useState(
-    "http://127.0.0.1:8000/static/post_images/default_avatar.png"
+  const [avatar1, setAvatar] = useState(
+    "https://www.steam-ed.ie/wp-content/uploads/2021/08/Female-Avatar.jpeg"
   );
-  console.log(props.id);
   //Load data ve giao vien
   useEffect(async () => {
     try {
-      const res = await axios.get(
-        "http://127.0.0.1:8000/teachers/" + props.id + "/update"
+      const res1 = await axios.get(
+        "http://127.0.0.1:8000/teachers/" + props.id
       );
-      setTeacher(res.data);
-      if (res.data.avatar != null)
-        setAvatar("http://127.0.0.1:8000/static" + res.data.avatar);
-      console.log(res.data);
-
-      const reRes = await axios.get(
-        "http://127.0.0.1:8000/teachers/" + props.id + "/class"
-      );
-      setClasss(reRes.data.name);
-      console.log(reRes.data);
+      setTeacher(res1.data);
     } catch {
       console.log("Error");
     }
@@ -58,15 +48,13 @@ const ProfileTeacher = (props) => {
             <div className={classes.information}>
               <h2 className="profile_title details_title">THÔNG TIN CƠ BẢN</h2>
               <p className={classes.details_content}>
-                <i className={classes["ti-bolt"]}></i> Là giáo viên trông trẻ
-                suất sắc, có kinh nghiệm trông trẻ hơn 30 năm. Là 1 người tâm
-                huyết với nghề và được nhiều phụ huynh ưa thích. Đạt thành tích
-                giáo viên trông trẻ cấp tỉnh.{" "}
+                <i className={classes["ti-bolt"]}></i>
+                <p>Giới tính: {teacher.sex == 1 ? "Nam" : "Nữ"}</p>{" "}
               </p>
               <p className={classes.details_content}>
-                <i className={classes["ti-bolt"]}></i> Đạt được 1 số giải thưởng
-                lớn cấp thành phố như: ru ngủ trẻ cấp tốc, biếng ăn không đáng
-                lo ngại, dỗ trẻ siêu tốc,...
+                <i className={classes["ti-bolt"]}></i>{" "}
+                <p>Thành tích: {teacher.achievement}</p>
+                <p>Tuổi : {teacher.age}</p>
               </p>
               <div className={classes.class_master}>
                 <p className={classes.class_master_title}>Lớp phụ trách</p>
@@ -94,15 +82,19 @@ const ProfileTeacher = (props) => {
             <div className={classes.body_img}>
               <img
                 src={
-                  "https://pdp.edu.vn/wp-content/uploads/2021/01/hinh-anh-girl-xinh-toc-ngan-de-thuong.jpg"
+                  teacher.avatar == null
+                    ? avatar1
+                    : "http://127.0.0.1:8000/static" + teacher.avatar
                 }
                 alt="sdasdgd"
+                className={classes.profileImage}
               />
             </div>
             <div className={classes.contact}>
               <h2 className={classes.profile_title}>THÔNG TIN LIÊN HỆ</h2>
               <p className={classes.profile_content}>
                 <i className={classes["ti-mobile"]}></i>{" "}
+                <p>Số điện thoại: {teacher.phone}</p>
               </p>
               <p className={classes.profile_content}>
                 <i className={classes["ti-email"]}></i> {teacher.email}
@@ -115,12 +107,7 @@ const ProfileTeacher = (props) => {
                 học sư phạm Hà Nội
               </p>
             </div>
-            <div className={classes.position}>
-              <h2 className={classes.profile_title}>CHỨC VỤ</h2>
-              <p className={classes.profile_content}>
-                <i className={classes["ti-medall"]}></i> Hiệu phó
-              </p>
-            </div>
+            <div className={classes.position}></div>
           </div>
         </div>
       </div>

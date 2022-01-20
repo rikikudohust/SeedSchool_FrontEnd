@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import styles from "../../assets/CSS/parents/AddStudentInfor.module.css";
 import noFileChosenYet from "../../assets/Icons/nofilechosenyet.png";
+axios.defaults.withCredentials = true;
 
 const AddStudentInfor = (props) => {
   const [name, setName] = useState();
@@ -51,23 +52,31 @@ const AddStudentInfor = (props) => {
   };
 
   const Update = async () => {
-    let data = new FormData();
-    data.append("user", localStorage.getItem("id"));
-    data.append("avatar", file, file.name);
-    console.log(file.name);
-    data.append("name", name);
-    data.append("sex", sex);
-    data.append("nameparent", parentName);
-    data.append("phoneparent", parentNumber);
-    data.append("address", address);
-    data.append("age", age);
-    data.append("email", email);
-    console.log(data);
-    console.log();
+    // let data = new FormData();
+    // data.append("user", localStorage.getItem("id"));
+    // data.append("avatar", file, file.name);
+    // console.log(file.name);
+    // data.append("name", name);
+    // data.append("sex", sex);
+    // data.append("nameparent", parentName);
+    // data.append("phoneparent", parentNumber);
+    // data.append("address", address);
+    // data.append("age", age);
+    // console.log(data);
+    // console.log(localStorage.getItem("id"));
+
+    const data1 = {
+      user: localStorage.getItem("id"),
+      name: name,
+    };
+    console.log(data1);
     try {
-      const res = await axios.put(
-        "http://127.0.0.1:8000/students/" + localStorage.getItem("id"),
-        data
+      const res = await axios.post(
+        "http://127.0.0.1:8000/students/profile",
+        data1,
+        {
+          withCredentials: true,
+        }
       );
     } catch {
       alert("wrong input");

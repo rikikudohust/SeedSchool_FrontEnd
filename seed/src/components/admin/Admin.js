@@ -46,9 +46,12 @@ const Admin = (props) => {
 
   const onCloseSchedule = () => setOpenSchedule(0);
 
-  const addClass = () => setAddingClass(1);
+  const addClass = (id) => setAddingClass(id);
 
-  const closeAddClass = () => setAddingClass(0);
+  const closeAddClass = () => {
+    console.log("clicked");
+    setAddingClass(0);
+  };
 
   const onTurnOnEditMenu = () => setIsEditMenu(1);
 
@@ -189,7 +192,9 @@ const Admin = (props) => {
           <AddActivities closeAddActivities={closeAddActivities} />
         )}
         {addingAnounn == 1 && <AddAnounn closeAddAnounn={closeAddAnounn} />}
-        {addingClass == 1 && <AddClass closeAddClass={closeAddClass} />}
+        {addingClass != 0 && (
+          <AddClass closeAddClass={closeAddClass} id={addingClass} />
+        )}
         {addingTeacher == 1 && <AddTeacher closeAddTeacher={closeAddTeacher} />}
         {addingStudent == 1 && <AddStudent closeAddStudent={closeAddStudent} />}
         {openStudent != 0 && (

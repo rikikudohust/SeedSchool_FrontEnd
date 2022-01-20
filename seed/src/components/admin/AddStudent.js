@@ -41,7 +41,8 @@ const AddStudent = (props) => {
     const data = {
       email: email,
       password: password,
-      username: username,
+      username: email,
+      name: username,
       role: 2,
     };
     try {

@@ -73,9 +73,7 @@ const StudentList = (props) => {
                 />
               </div>
               <div class={classes.item_name}>Học sinh: {element.name}</div>
-              <div class={classes.item_position}>
-                Giới tính: {element.sex == 0 ? "Nữ" : "Nam"}
-              </div>
+              <div class={classes.item_position}>ID: {element.user}</div>
               <button onClick={() => props.onOpenStudent(element.user)}>
                 {" "}
                 Thông tin chi tiết

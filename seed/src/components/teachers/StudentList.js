@@ -1,44 +1,92 @@
 import { AddOutlined, Create } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
-import classes from '../../assets/CSS/admin/Classes.module.css'
-import button from '../../assets/CSS/general/AddButton.module.css'
+import classes from "../../assets/CSS/admin/Classes.module.css";
+import button from "../../assets/CSS/general/AddButton.module.css";
+import axios from "axios";
 // import Students from '../../assets/DummyData/Teachers/StudentList'
 
-const StudentList = props => {
+const StudentList = (props) => {
+  const [Students, setStudents] = useState([]);
+  const [image, setImage] = useState(
+    "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
+  );
 
-    const [isLoading, setIsLoading] = useState(false);
-    const [Students, setStudents] = useState([]);
-    const [image, setImage] = useState('http://127.0.0.1:8000/static/post_images/default_avatar.png');
+  //Lay data toan bo hoc sinh
+  useEffect(async () => {
+    try {
+      const res = await axios.get("http://127.0.0.1:8000/teachers/students", {
+        withCredentials: true,
+      });
+      // const data = await response.json();
+      setStudents(res.data);
+      console.log(Students);
+    } catch {
+      console.log("Error");
+    }
+  }, []);
 
-    //Lay thong tin hoc sinh thuoc quan ly cua giao vien
-    useEffect(async () => {
-        setIsLoading(true)
-        const response = await fetch('http://127.0.0.1:8000/teachers/' + localStorage.getItem('id') + '/students')
-        const data = await response.json()
-        setStudents(data)
-        setIsLoading(false)
-    }, [])
+  return (
+    <>
+      <div className={classes.container}>
+        <button className={button.btn} onClick={props.addStudent}>
+          <Create />
+        </button>
+        <div className={classes.container_content}>
+          {Students.map((element) => (
+            // <div className={classes.item}>
 
-    return <>
-        <div className={classes.class_liss}>
-            <button className={button.btn} onClick={props.onAddStudent} >
-                <Create />
-            </button>
-            <div className={classes.class_list_body}>
-                {Students.map(element =>
-                    <div className={classes.item}>
-                        <img src={element.avatar == null ? image : "http://127.0.0.1:8000/static" + element.avatar} alt="ảnh bé" />
-                        <div className={classes.content_item}>
-                            <h3 className={classes.class_name}><span>Bé: </span>{element.name}</h3>
-                            <p className={classes.class_teacher}><span>Email: </span>{element.email}</p>
-                            <p className={classes.class_number}><span>Giới tính: </span>{element.sex}</p>
-                            <button className={classes.content_item_btn} onClick={() => props.onOpenStudent(element.user)}>Thông tin</button>
-                        </div>
-                    </div>
-                )}
+            //   <img
+            //     src={
+            //       element.avatar == null
+            //         ? image
+            //         : "http://127.0.0.1:8000/static" + element.avatar
+            //     }
+            //     alt="ảnh bé"
+            //   />
+            //   <div className={classes.content_item}>
+            //     <h3 className={classes.class_name}>
+            //       <span>Béo: </span>
+            //       {element.name}
+            //     </h3>
+            //     <p className={classes.class_teacher}>
+            //       <span>Email: </span>
+            //       {element.email}
+            //     </p>
+            //     <p className={classes.class_number}>
+            //       <span>Giới tính: </span>
+            //       {element.sex == 0 ? "Nữ" : "Nam"}
+            //     </p>
+            //     <button
+            //       className={classes.content_item_btn}
+            //       onClick={() => props.onOpenStudent(element.user)}
+            //     >
+            //       Thông tin
+            //     </button>
+            //   </div>
+            // </div>
+            <div class={classes.item}>
+              <div class={classes.item_image}>
+                <img
+                  src={
+                    element.avatar == null
+                      ? image
+                      : "http://127.0.0.1:8000/static" + element.avatar
+                  }
+                  alt="ảnh bé"
+                />
+              </div>
+              <div class={classes.item_name}>Học sinh: {element.name}</div>
+              <div class={classes.item_position}>ID: {element.user}</div>
+              <button onClick={() => props.onOpenStudent(element.user)}>
+                {" "}
+                Thông tin chi tiết
+              </button>
             </div>
+          ))}
         </div>
+      </div>
     </>
-}
+  );
+};
 
-export default StudentList
+export default StudentList;

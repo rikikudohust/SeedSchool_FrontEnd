@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import classes from "../../assets/CSS/admin/Day.module.css";
 import styled from "styled-components";
-import AddFood from "./AddFood";
 import { Create, FoodBank } from "@mui/icons-material";
 import button from "../../assets/CSS/general/AddButton.module.css";
 import BrkList from "../../assets/DummyData/Breakfast";
@@ -12,9 +11,8 @@ import header1 from "../../assets/DummyData/Admin/ImageMenu/header1.jpg";
 import header2 from "../../assets/DummyData/Admin/ImageMenu/header2.jpg";
 import header3 from "../../assets/DummyData/Admin/ImageMenu/header3.jpg";
 
-const Day = (props) => {
+const ParentDay = (props) => {
   const [meal, setMeal] = useState(0);
-  const [onAddingFood, setOnAddingFood] = useState(false);
   const [listOfFood, setListOfFood] = useState([]);
   const [tmp, setTmp] = useState(header1);
 
@@ -36,9 +34,6 @@ const Day = (props) => {
 
   return (
     <>
-      <button className={button.btn} onClick={() => turnOnAddingFood()}>
-        <Create />
-      </button>
       <div className={classes.btnHolder}>
         <button
           className={classes.btnMeal}
@@ -101,9 +96,6 @@ const Day = (props) => {
           );
         })}
       </ul>
-      {onAddingFood == true && (
-        <AddFood turnOnAddingFood={turnOnAddingFood} idDay={props.id} />
-      )}
     </>
   );
 };
@@ -201,4 +193,4 @@ const Day = (props) => {
 //   );
 // };
 
-export default Day;
+export default ParentDay;
