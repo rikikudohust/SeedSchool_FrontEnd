@@ -19,11 +19,12 @@ import Checkin from "./Calendar";
 import ProfileTeacher from "../general/ProfileTeacher";
 import ProfileStudent from "../general/ProfileStudent";
 import TimeTable from "../general/TimeTable";
-import Menu from "../admin/Menu";
+import Menu from "./ParentMenu";
 import ViewActivities from "./ViewActivities";
 import ViewTeacher from "./ViewTeacher";
 import Comment from "./Comment";
 import AddStudentInfor from "./AddStudentInfor";
+import ParentFee from "./ParentFee";
 
 const Parents = (props) => {
   const [require, setRequire] = useState(0);
@@ -203,6 +204,7 @@ const Parents = (props) => {
           {require == 3 && <ParentsAnounn />}
           {require == 7 && <AddStudentInfor />}
           {require == 1 && <Checkin />}
+          {require == 4 && <ParentFee />}
           {/* {require == 3 && <Classes />} */}
           {require == 5 && (
             <ViewTeacher id={teacherId} onAddComment={onAddComment} />

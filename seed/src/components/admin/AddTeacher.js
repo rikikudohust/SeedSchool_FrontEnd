@@ -41,7 +41,8 @@ const AddTeacher = (props) => {
     const data = {
       email: email,
       password: password,
-      username: username,
+      name: username,
+      username: email,
       role: 1,
     };
     try {

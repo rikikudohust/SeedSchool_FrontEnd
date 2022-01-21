@@ -14,6 +14,8 @@ import MainPage from "./components/general/MainPage";
 import ProfileStudent from "./components/general/ProfileStudent";
 import AddCheck from "./components/teachers/AddCheck";
 import AddFood from "./components/admin/AddFood";
+import AddTimeTable from "./components/teachers/AddTimeTable";
+import History from "./components/teachers/History";
 
 function App() {
   return (

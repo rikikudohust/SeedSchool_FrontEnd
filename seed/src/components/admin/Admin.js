@@ -15,6 +15,7 @@ import {
   Group,
   PeopleAlt,
   CalendarToday,
+  MoneyRounded,
 } from "@mui/icons-material";
 import EditMenu from "./EditMenu";
 import AddTeacher from "./AddTeacher";
@@ -28,6 +29,7 @@ import ViewActivities from "./ViewActivities";
 import ProfileTeacher from "../general/ProfileTeacher";
 import Schedule from "../admin/AdminSchedule";
 import AddFood from "./AddFood";
+import AdminFee from "./AdminFee";
 
 const Admin = (props) => {
   const [isEditMenu, setIsEditMenu] = useState(0);
@@ -173,6 +175,18 @@ const Admin = (props) => {
               Quản lý học sinh
             </h4>
           </button>
+          <button
+            style={{ backgroundColor: require == 11 ? "#1877f2" : "#FFF" }}
+            onClick={() => setRequire(11)}
+          >
+            <MoneyRounded
+              style={{ color: require == 11 ? "#FFF" : "#1877f2" }}
+              className={classes.icon}
+            />
+            <h4 style={{ color: require == 11 ? "#FFF" : "#C0C0C0" }}>
+              Quản lý học phí
+            </h4>
+          </button>
           {/* <button
             style={{ backgroundColor: require == 6 ? "#1877f2" : "#FFF" }}
             onClick={() => setRequire(6)}
@@ -232,6 +246,7 @@ const Admin = (props) => {
               onOpenSchedule={onCloseSchedule}
             />
           )}
+          {require == 11 && <AdminFee />}
         </div>
       </div>
     </>

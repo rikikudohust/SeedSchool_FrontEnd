@@ -24,9 +24,12 @@ import ProfileStudent from "../general/ProfileStudent";
 import ViewActivities from "./ViewActivities";
 import axios from "axios";
 import AddTeacherInfor from "./AddTeacherInfor";
+import History from "./History";
 import TeacherAnnoun from "./TeacherAnnoun";
+import Calendar from "./Calendar";
 
 const Teachers = (props) => {
+  const [history, setHistory] = useState(0);
   const [check, setCheck] = useState(0);
   const [require, setRequire] = useState(5);
   const [addingStudent, setAddingStudent] = useState(0);
@@ -45,6 +48,11 @@ const Teachers = (props) => {
     setCheck(id);
   };
 
+  const onAddTimeTable = () => {
+    console.log("alo");
+    setAddingTimeTable(1);
+  };
+
   const closeAddCheck = () => setCheck(0);
 
   const onAddStudent = () => setAddingStudent(1);
@@ -54,7 +62,6 @@ const Teachers = (props) => {
     setRequire(4);
     setAddingStudent(0);
   };
-  const onAddTimeTable = () => setAddingTimeTable(1);
 
   const closeAddTimeTable = () => {
     setRequire(10);
@@ -69,6 +76,10 @@ const Teachers = (props) => {
   const onOpenActi = (id) => setActi(id);
 
   const onCloseActi = () => setActi(0);
+
+  const onShowHistory = () => setHistory(1);
+
+  const onHideHistory = () => setHistory(0);
 
   //Lay thong tin giao vien
   useEffect(async () => {
@@ -91,7 +102,7 @@ const Teachers = (props) => {
     <>
       <div className={classes.container}>
         <div className={classes.controller}>
-          <h1>{name}</h1>
+          <h1>Teacher</h1>
           <button
             style={{ backgroundColor: require == 0 ? "#1877f2" : "#FFF" }}
             onClick={() => setRequire(0)}
@@ -166,6 +177,10 @@ const Teachers = (props) => {
           </button>
         </div>
 
+        {history == 1 && <History onHideHistory={onHideHistory} />}
+        {addingTimeTable == 1 && (
+          <AddTimeTable closeAddTimeTable={closeAddTimeTable} />
+        )}
         {check != 0 && <AddCheck id={check} closeAddCheck={closeAddCheck} />}
         {addingStudent == 1 && <AddStudent closeAddStudent={closeAddStudent} />}
         {addingTimeTable == 1 && (
@@ -178,8 +193,13 @@ const Teachers = (props) => {
 
         <div className={classes.additional}>
           <Nav avatar={avatar} onProfile={onProfile} />
-          {require == 0 && <TimeTable />}
-
+          {require == 0 && (
+            <TimeTable
+              onAddTimeTable={onAddTimeTable}
+              onShowHistory={onShowHistory}
+            />
+          )}
+          {require == 1 && <Calendar />}
           {require == 2 && <TeachersActivities onOpenActi={onOpenActi} />}
           {require == 4 && (
             <StudentList

@@ -22,6 +22,14 @@ const Day = (props) => {
     setOnAddingFood(!onAddingFood);
   };
 
+  const deleteFood = async (id) => {
+    try {
+      const res = await axios.delete("http://127.0.0.1:8000/meal/" + id);
+    } catch {
+      alert("There are smth wrong!!");
+    }
+  };
+
   useEffect(async () => {
     try {
       const res = await axios.get(
@@ -95,6 +103,14 @@ const Day = (props) => {
                   <h5 className={classes.description}>
                     Món ăn dinh dưỡng dành cho bé
                   </h5>
+                </div>
+                <div>
+                  <button
+                    className={classes.deleteBtn}
+                    onClick={() => deleteFood(id)}
+                  >
+                    Xóa
+                  </button>
                 </div>
               </div>
             </li>

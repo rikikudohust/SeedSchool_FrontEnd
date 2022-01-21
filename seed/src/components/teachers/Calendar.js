@@ -1,52 +1,55 @@
-// // import "./styles.css";
-// import { ClassNames } from "@emotion/react";
-// import { useState, useEffect } from "react";
-// import InfiniteCalendar from "react-infinite-calendar";
-// import "react-infinite-calendar/styles.css";
-// import classes from '../../assets/CSS/parents/Calendar.module.css'
-// // import Students from '../../assets/DummyData/Teachers/StudentList'
+// import "./styles.css";
+import { ClassNames } from "@emotion/react";
+import { useState, useEffect } from "react";
+import InfiniteCalendar from "react-infinite-calendar";
+import "react-infinite-calendar/styles.css";
+import classes from "../../assets/CSS/parents/Calendar.module.css";
+import axios from "axios";
+// import Students from '../../assets/DummyData/Teachers/StudentList'
 
+export default function Calendar(props) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [Students, setStudents] = useState([]);
 
-// export default function Calendar(props) {
+  const onSelect = (event) => {
+    console.log(event);
+  };
 
+  //Lay danh sach hoc sinh de hien thi
+  useEffect(async () => {
+    setIsLoading(true);
+    try {
+      const res = await axios.get("http://127.0.0.1:8000/teachers/students");
+      setStudents(res.data);
+      setIsLoading(false);
+    } catch {
+      console.log("Cant get students!");
+    }
+  }, []);
 
-//     const [isLoading, setIsLoading] = useState(false);
-//     const [Students, setStudents] = useState([]);
+  return (
+    <div className={classes.container}>
+      <InfiniteCalendar
+        width="70%"
+        height={640}
+        rowHeight={100}
+        onSelect={onSelect}
+        showHeader={false}
+        showOverlay={false}
+        showWeekdays={false}
+      />
 
-//     const onSelect = (event) => {
-//         console.log(event)
-//     }
-
-//     //Lay danh sach hoc sinh de hien thi
-//     useEffect(async () => {
-//         setIsLoading(true)
-//         const response = await fetch('http://127.0.0.1:8000/teachers/'+localStorage.getItem('id')+'/students')
-//         const data = await response.json()
-//         setStudents(data)
-//         setIsLoading(false)
-//     }, [])
-
-//     return (
-//         <div className={classes.container}>
-//             <InfiniteCalendar width="70%" height={640}
-//                 rowHeight={100}
-//                 onSelect={onSelect}
-//                 showHeader={false}
-//                 showOverlay={false}
-//                 showWeekdays={false} />
-
-//             <div className={classes.list}>
-//                 {Students.map(element =>
-//                     <div className={classes.indie} onClick={()=> props.onCheck(element.user)}>
-//                         <img src={element.class_img} />
-//                         <h2>{element.name}</h2>
-//                     </div>)}
-//             </div>
-//         </div>
-
-//     );
-// }
-
-export default function Calendar() {
-    return <></>
+      <div className={classes.list}>
+        {Students.map((element) => (
+          <div
+            className={classes.indie}
+            onClick={() => props.onCheck(element.user)}
+          >
+            <img src={element.class_img} />
+            <h2>{element.name}</h2>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }

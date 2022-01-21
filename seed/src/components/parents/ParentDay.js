@@ -16,10 +16,6 @@ const ParentDay = (props) => {
   const [listOfFood, setListOfFood] = useState([]);
   const [tmp, setTmp] = useState(header1);
 
-  const turnOnAddingFood = () => {
-    setOnAddingFood(!onAddingFood);
-  };
-
   useEffect(async () => {
     try {
       const res = await axios.get(
