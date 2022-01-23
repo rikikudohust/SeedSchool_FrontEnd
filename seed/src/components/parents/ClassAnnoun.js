@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import classes from "../../assets/CSS/general/Anounn.module.css";
+import Announcements from "../../assets/DummyData/General/Anounncements";
 import axios from "axios";
 
-const ParentsAnounn = (props) => {
+const ClassAnnoun = () => {
   const [thongbaorieng, setthongbaorieng] = useState([]);
   const [thongbaochung, setthongbaochung] = useState([]);
   const [news2, setNews] = useState([]);
@@ -12,7 +13,7 @@ const ParentsAnounn = (props) => {
       const res = await axios.get(
         "http://127.0.0.1:8000/students/" +
           localStorage.getItem("id") +
-          "/person_news"
+          "/class_news"
       );
       // const data = await response.json();
       setthongbaorieng(res.data);
@@ -55,7 +56,7 @@ const ParentsAnounn = (props) => {
             <li className={classes.notification_content}>
               <div className={classes.item}>
                 <a href="#" className={classes.item_content}>
-                  <span>[Thông báo riêng]</span> {element.title}
+                  <span>[Thông báo lớp]</span> {element.title}
                   <br />
                   {element.description}
                 </a>
@@ -69,4 +70,4 @@ const ParentsAnounn = (props) => {
   );
 };
 
-export default ParentsAnounn;
+export default ClassAnnoun;

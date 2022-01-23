@@ -14,6 +14,7 @@ import {
   Check,
   Create,
   PermIdentity,
+  Notifications,
 } from "@mui/icons-material";
 import StudentList from "./StudentList";
 import AddCheck from "./AddCheck";
@@ -25,7 +26,7 @@ import ViewActivities from "./ViewActivities";
 import axios from "axios";
 import AddTeacherInfor from "./AddTeacherInfor";
 import History from "./History";
-import TeacherAnnoun from "./TeacherAnnoun";
+import TeacherAnnoun from "./Personal2Announ";
 import Calendar from "./Calendar";
 
 const Teachers = (props) => {
@@ -40,6 +41,19 @@ const Teachers = (props) => {
     "https://www.steam-ed.ie/wp-content/uploads/2021/08/Female-Avatar.jpeg"
   );
   const [name, setName] = useState("");
+  const [teacher, setTeacher] = useState({});
+  //Load data ve giao vien
+  useEffect(async () => {
+    try {
+      const res1 = await axios.get(
+        "http://127.0.0.1:8000/teachers/" + localStorage.getItem("id")
+      );
+      setTeacher(res1.data);
+      console.log(avatar);
+    } catch {
+      console.log("Error");
+    }
+  }, []);
 
   const onProfile = () => setRequire(5);
 
@@ -81,22 +95,22 @@ const Teachers = (props) => {
 
   const onHideHistory = () => setHistory(0);
 
-  //Lay thong tin giao vien
-  useEffect(async () => {
-    try {
-      const res = await axios.get(
-        "http://127.0.0.1:8000/teachers/" +
-          localStorage.getItem("id") +
-          "/update"
-      );
-      console.log(res.data);
-      setName(res.data.name);
-      if (res.data.avatar != null)
-        setAvatar("http://127.0.0.1:8000/static" + res.data.avatar);
-    } catch {
-      console.log("Error");
-    }
-  }, []);
+  // //Lay thong tin giao vien
+  // useEffect(async () => {
+  //   try {
+  //     const res = await axios.get(
+  //       "http://127.0.0.1:8000/teachers/" +
+  //         localStorage.getItem("id") +
+  //         "/update"
+  //     );
+  //     console.log(res.data);
+  //     setName(res.data.name);
+  //     if (res.data.avatar != null)
+  //       setAvatar("http://127.0.0.1:8000/static" + res.data.avatar);
+  //   } catch {
+  //     console.log("Error");
+  //   }
+  // }, []);
 
   return (
     <>
@@ -167,7 +181,7 @@ const Teachers = (props) => {
             style={{ backgroundColor: require == 8 ? "#1877f2" : "#FFF" }}
             onClick={() => setRequire(8)}
           >
-            <PermIdentity
+            <Notifications
               style={{ color: require == 8 ? "#FFF" : "#1877f2" }}
               className={classes.icon}
             />
@@ -199,7 +213,7 @@ const Teachers = (props) => {
               onShowHistory={onShowHistory}
             />
           )}
-          {require == 1 && <Calendar />}
+          {require == 1 && <Calendar onCheck={onCheck} />}
           {require == 2 && <TeachersActivities onOpenActi={onOpenActi} />}
           {require == 4 && (
             <StudentList

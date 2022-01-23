@@ -19,7 +19,11 @@ export default function Calendar(props) {
   useEffect(async () => {
     setIsLoading(true);
     try {
-      const res = await axios.get("http://127.0.0.1:8000/teachers/students");
+      const res = await axios.get(
+        "http://127.0.0.1:8000/teachers/" +
+          localStorage.getItem("id") +
+          "/students"
+      );
       setStudents(res.data);
       setIsLoading(false);
     } catch {
@@ -45,8 +49,14 @@ export default function Calendar(props) {
             className={classes.indie}
             onClick={() => props.onCheck(element.user)}
           >
-            <img src={element.class_img} />
-            <h2>{element.name}</h2>
+            <img
+              src={
+                element.avatar == null
+                  ? "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
+                  : "http://127.0.0.1:8000/static" + element.avatar
+              }
+            />
+            <h2 className={classes.studentName}>{element.name}</h2>
           </div>
         ))}
       </div>

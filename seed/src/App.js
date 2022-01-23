@@ -16,6 +16,8 @@ import AddCheck from "./components/teachers/AddCheck";
 import AddFood from "./components/admin/AddFood";
 import AddTimeTable from "./components/teachers/AddTimeTable";
 import History from "./components/teachers/History";
+import axios from "axios";
+axios.defaults.withCredentials = true;
 
 function App() {
   return (

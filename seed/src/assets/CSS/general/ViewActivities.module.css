@@ -52,3 +52,8 @@
   cursor: pointer;
   border-radius: 6px;
 }
+
+.number {
+  position: absolute;
+  bottom: 20px;
+}

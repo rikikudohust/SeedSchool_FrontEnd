@@ -3,6 +3,20 @@
   overflow: hidden;
 }
 
+.btnHolder {
+  padding: auto;
+  margin: 20px auto;
+}
+
+.btnMeal {
+  border: 1px solid rgb(152, 187, 99);
+  text-align: center;
+  margin: 7px;
+  height: 40px;
+  width: 20vw;
+  font-size: 20px;
+}
+
 .add_notification {
   color: red;
   display: block;

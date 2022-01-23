@@ -3,7 +3,7 @@ import classes from "../../assets/CSS/general/Anounn.module.css";
 import Announcements from "../../assets/DummyData/General/Anounncements";
 import axios from "axios";
 
-const Anounn = (props) => {
+const PublicAnnoun = () => {
   const [thongbaochung, setthongbaochung] = useState([]);
   const [news2, setNews] = useState([]);
 
@@ -17,10 +17,15 @@ const Anounn = (props) => {
     }
   }, []);
 
+  function check(t) {
+    return t.types == 2;
+  }
+
   return (
     <>
       <ul className={classes.notification_body}>
         {thongbaochung
+          .filter(check)
           .slice(0)
           .reverse()
           .map((element) => {
@@ -28,7 +33,7 @@ const Anounn = (props) => {
               <li className={classes.notification_content}>
                 <div className={classes.item}>
                   <a href="#" className={classes.item_content}>
-                    <span>[Title]</span> {element.title}
+                    <span>[Thông báo chung]</span> {element.title}
                     <br />
                     {element.description}
                   </a>
@@ -42,4 +47,4 @@ const Anounn = (props) => {
   );
 };
 
-export default Anounn;
+export default PublicAnnoun;

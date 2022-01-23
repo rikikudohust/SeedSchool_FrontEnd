@@ -5,6 +5,7 @@
     "@mui/icons-material": "^5.2.5",
     "@mui/material": "^5.2.7",
     "@syncfusion/ej2-react-calendars": "^19.4.38",
+    "js-cookie": "^3.0.1",
     "react-router-dom": "^6.2.1",
     "styled-components": "^5.3.3"
   }

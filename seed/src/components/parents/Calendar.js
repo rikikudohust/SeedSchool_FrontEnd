@@ -9,17 +9,30 @@ var d = new Date(),
   day = "" + d.getDate(),
   year = d.getFullYear();
 
-if (month.length < 2) month = "0" + month;
-if (day.length < 2) day = "0" + day;
+// if (month.length < 2) month = "0" + month;
+// if (day.length < 2) day = "0" + day;
 
 const formatDate = year + "-" + month + "-" + day;
 
 export default function Calendar() {
   const [date, setDate] = useState("");
   const [image, setImage] = useState(
-    "http://127.0.0.1:8000/static/post_images/nodata_found.png"
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeUQ_giX22Ft4sWC2RoHNxDkhsuocFKeiRtg&usqp=CAU"
   );
   const [comment, setComment] = useState("");
+
+  const handleAbsent = async () => {
+    try {
+      const res = await axios.post(
+        "http://127.0.0.1:8000/students/" +
+          localStorage.getItem("id") +
+          "/absent"
+      );
+      alert("success");
+    } catch {
+      console.log("cant absent");
+    }
+  };
 
   //Lay thong tin diem danh ngay luc dau
   useEffect(async () => {
@@ -28,15 +41,18 @@ export default function Calendar() {
     };
     console.log(date);
     try {
-      const res = await axios.post(
+      const res = await axios.get(
         "http://127.0.0.1:8000/students/" +
           localStorage.getItem("id") +
-          "/attend",
-        data
+          "/attend?date=" +
+          formatDate
       );
+      console.log(res.data.image);
       if (res.data.image == null)
-        setImage("http://127.0.0.1:8000/static/post_images/nodata_found.png");
-      else setImage(`http://127.0.0.1:8000/static/${res.data.image}`);
+        setImage(
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeUQ_giX22Ft4sWC2RoHNxDkhsuocFKeiRtg&usqp=CAU"
+        );
+      else setImage("http://127.0.0.1:8000/static" + res.data.image);
       setComment(res.data.comment);
       console.log(res.data);
     } catch {
@@ -51,15 +67,17 @@ export default function Calendar() {
     };
     console.log(date);
     try {
-      const res = await axios.post(
+      const res = await axios.get(
         "http://127.0.0.1:8000/students/" +
           localStorage.getItem("id") +
-          "/attend",
-        data
+          "/attend?date=" +
+          date
       );
       if (res.data.image == null)
-        setImage("http://127.0.0.1:8000/static/post_images/nodata_found.png");
-      else setImage(`http://127.0.0.1:8000/static/${res.data.image}`);
+        setImage(
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeUQ_giX22Ft4sWC2RoHNxDkhsuocFKeiRtg&usqp=CAU"
+        );
+      else setImage(`http://127.0.0.1:8000/static${res.data.image}`);
       setComment(res.data.comment);
       console.log(res.data);
     } catch {
@@ -92,7 +110,7 @@ export default function Calendar() {
           <h2>Nhận xét của giáo viên</h2>
           <p>{comment}</p>
         </div>
-        <button>Xin nghỉ</button>
+        <button onClick={handleAbsent}>Xin nghỉ</button>
       </div>
     </div>
   );

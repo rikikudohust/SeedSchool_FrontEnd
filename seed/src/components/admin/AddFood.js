@@ -53,7 +53,8 @@ const AddFood = (props) => {
         "http://127.0.0.1:8000/menus/" + props.idDay + "/sesion/" + section,
         data
       );
-      props.turnOnAddingFood();
+      props.increase();
+      props.turnOffAddingFood();
     } catch {
       alert("there are smth wrong!!!");
     }
@@ -139,7 +140,7 @@ const AddFood = (props) => {
             </form>
             <div className={classes.inputFile}>
               <div className={classes.img_place}>
-                <img src={avatar} />
+                <img src={avatar} className={classes.avatarFood} />
               </div>
               <input
                 className={ClassOutlined.fileInput}
@@ -154,7 +155,7 @@ const AddFood = (props) => {
             </button>
             <button
               className={classes.cancel__Btn}
-              onClick={props.turnOnAddingFood}
+              onClick={props.turnOffAddingFood}
             >
               Cancel
             </button>

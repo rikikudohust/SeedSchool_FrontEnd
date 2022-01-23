@@ -28,6 +28,8 @@ const Classes = (props) => {
     } catch {
       alert("wrong input");
     }
+    props.setRequire(69);
+    props.setRequire(3);
   };
 
   //Load data tat ca cac lop
@@ -35,7 +37,7 @@ const Classes = (props) => {
     const response = await fetch("http://127.0.0.1:8000/classes");
     const data = await response.json();
     setClass(data);
-  }, [Class]);
+  }, []);
 
   return (
     <>

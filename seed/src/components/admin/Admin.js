@@ -61,7 +61,11 @@ const Admin = (props) => {
 
   const addAnounn = () => setAddingAnounn(1);
 
-  const closeAddAnounn = () => setAddingAnounn(0);
+  const closeAddAnounn = () => {
+    setRequire(69);
+    setRequire(2);
+    setAddingAnounn(0);
+  };
 
   const addActivities = () => setAddingActivities(1);
 
@@ -97,6 +101,12 @@ const Admin = (props) => {
     setRequire(10);
     setRequire(5);
     setAddingStudent(0);
+  };
+
+  const reRender = () => {
+    const tmp = require;
+    setRequire(69);
+    setRequire(tmp);
   };
   return (
     <>
@@ -219,7 +229,9 @@ const Admin = (props) => {
 
         <div className={classes.additional}>
           <Nav avatar={avatar} />
-          {require == 0 && <Menu onTurnOnEditMenu={onTurnOnEditMenu} />}
+          {require == 0 && (
+            <Menu onTurnOnEditMenu={onTurnOnEditMenu} setRequire={setRequire} />
+          )}
           {require == 1 && (
             <AdminActivities
               addActivities={addActivities}
@@ -227,7 +239,9 @@ const Admin = (props) => {
             />
           )}
           {require == 2 && <AdminAnounn addAnounn={addAnounn} />}
-          {require == 3 && <Classes addClass={addClass} />}
+          {require == 3 && (
+            <Classes addClass={addClass} setRequire={setRequire} />
+          )}
           {require == 4 && (
             <TeacherList
               addTeacher={addTeacher}

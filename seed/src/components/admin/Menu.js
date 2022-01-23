@@ -11,7 +11,13 @@ const Menu = (props) => {
 
   return (
     <>
-      {day != 6 && <Day id={day} onTurnOnEditMenu={props.onTurnOnEditMenu} />}
+      {day != 6 && (
+        <Day
+          id={day}
+          onTurnOnEditMenu={props.onTurnOnEditMenu}
+          setRequire={props.setRequire}
+        />
+      )}
       {day == 6 &&
         Week.map((element) => (
           <div className={classes.block1} onClick={() => setDay(element.id)}>

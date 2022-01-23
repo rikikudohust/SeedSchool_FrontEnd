@@ -52,18 +52,18 @@ const AddStudentInfor = (props) => {
   };
 
   const Update = async () => {
-    // let data = new FormData();
-    // data.append("user", localStorage.getItem("id"));
-    // data.append("avatar", file, file.name);
-    // console.log(file.name);
-    // data.append("name", name);
-    // data.append("sex", sex);
-    // data.append("nameparent", parentName);
-    // data.append("phoneparent", parentNumber);
-    // data.append("address", address);
-    // data.append("age", age);
-    // console.log(data);
-    // console.log(localStorage.getItem("id"));
+    let data = new FormData();
+    data.append("user", localStorage.getItem("id"));
+    data.append("avatar", file);
+    console.log(file.name);
+    data.append("name", name);
+    data.append("sex", sex);
+    data.append("nameparent", parentName);
+    data.append("phoneparent", parentNumber);
+    data.append("address", address);
+    data.append("age", age);
+    console.log(data);
+    console.log(localStorage.getItem("id"));
 
     const data1 = {
       user: localStorage.getItem("id"),
@@ -72,12 +72,12 @@ const AddStudentInfor = (props) => {
     console.log(data1);
     try {
       const res = await axios.post(
-        "http://127.0.0.1:8000/students/profile",
-        data1,
-        {
-          withCredentials: true,
-        }
+        "http://127.0.0.1:8000/students/" +
+          localStorage.getItem("id") +
+          "/profile",
+        data
       );
+      alert("Success");
     } catch {
       alert("wrong input");
     }
@@ -127,14 +127,6 @@ const AddStudentInfor = (props) => {
                 className={styles.inputControl}
                 placeholder="Địa chỉ"
                 onChange={handleAddress}
-              />
-            </div>
-            <div className={styles.inputInforStudent}>
-              <input
-                type="text"
-                className={styles.inputControl}
-                placeholder="Email"
-                onChange={handleEmail}
               />
             </div>
             <div className={styles.inputInforStudent}>

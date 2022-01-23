@@ -6,6 +6,7 @@ import styles from "../../assets/CSS/general/Schedule.module.css";
 
 const Schedule = (props) => {
   const [table, setTable] = useState([]);
+  const [teacher, setTeacher] = useState();
   const [newTable, setNewTable] = useState({
     t_11: null,
     t_12: null,
@@ -29,12 +30,23 @@ const Schedule = (props) => {
     t_45: null,
   });
 
+  //   useEffect(async () => {
+  //     try {
+  //       const res = await axios.get(
+  //         "http://127.0.0.1:8000/students/" +
+  //           localStorage.getItem("id") +
+  //           "/profile"
+  //       );
+  //       setTeacher(res.data.idteacher);
+  //     } catch {
+  //       console.log("bfdshfahdhfu");
+  //     }
+  //   }, []);
+
   useEffect(async () => {
     try {
       const res = await axios.get(
-        "http://127.0.0.1:8000/teachers/" +
-          localStorage.getItem("id") +
-          "/schedules"
+        "http://127.0.0.1:8000/teachers/" + props.teacherId + "/schedules"
       );
       setTable(res.data);
       setNewTable(
@@ -42,8 +54,8 @@ const Schedule = (props) => {
           return prev.id > current.id ? prev : current;
         })
       );
-    } catch {
-      console.log("smth had been wrong in ur code");
+    } catch (err) {
+      console.log(err);
     }
   }, [table]);
 
@@ -52,7 +64,7 @@ const Schedule = (props) => {
       <div className={styles.container}>
         <div className={styles.title}>
           <div className={styles.class_schedule}>Class Schedule</div>
-          <div className={styles.class_name}>Version:{newTable.version}</div>
+          <div className={styles.class_name}>Class name: {props.classname}</div>
         </div>
         <div className={styles.list}>
           <table>

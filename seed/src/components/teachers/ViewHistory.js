@@ -1,11 +1,13 @@
-import axios from "axios";
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router";
 import styles from "../../assets/CSS/general/Schedule.module.css";
+import axios from "axios";
 
-const Schedule = (props) => {
+const ViewHistory = () => {
+  const params = useParams();
+  const version = params.version.replace(":", "");
   const [table, setTable] = useState([]);
+  const [teacher, setTeacher] = useState();
   const [newTable, setNewTable] = useState({
     t_11: null,
     t_12: null,
@@ -27,7 +29,21 @@ const Schedule = (props) => {
     t_43: null,
     t_44: null,
     t_45: null,
+    version: null,
   });
+
+  //   useEffect(async () => {
+  //     try {
+  //       const res = await axios.get(
+  //         "http://127.0.0.1:8000/students/" +
+  //           localStorage.getItem("id") +
+  //           "/profile"
+  //       );
+  //       setTeacher(res.data.idteacher);
+  //     } catch {
+  //       console.log("bfdshfahdhfu");
+  //     }
+  //   }, []);
 
   useEffect(async () => {
     try {
@@ -36,14 +52,9 @@ const Schedule = (props) => {
           localStorage.getItem("id") +
           "/schedules"
       );
-      setTable(res.data);
-      setNewTable(
-        table.reduce(function (prev, current) {
-          return prev.id > current.id ? prev : current;
-        })
-      );
-    } catch {
-      console.log("smth had been wrong in ur code");
+      setNewTable(res.data.find((p) => p.version == version));
+    } catch (err) {
+      console.log(err);
     }
   }, [table]);
 
@@ -52,7 +63,7 @@ const Schedule = (props) => {
       <div className={styles.container}>
         <div className={styles.title}>
           <div className={styles.class_schedule}>Class Schedule</div>
-          <div className={styles.class_name}>Version:{newTable.version}</div>
+          <div className={styles.class_name}>Version: {version}</div>
         </div>
         <div className={styles.list}>
           <table>
@@ -103,4 +114,4 @@ const Schedule = (props) => {
   );
 };
 
-export default Schedule;
+export default ViewHistory;

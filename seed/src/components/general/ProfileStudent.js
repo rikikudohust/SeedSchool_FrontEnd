@@ -16,7 +16,7 @@ const ProfileStudent = (props) => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/students/" + props.id
+        "http://127.0.0.1:8000/students/" + props.id + "/profile"
       );
       const data = await response.json();
 
@@ -48,7 +48,7 @@ const ProfileStudent = (props) => {
   useEffect(async () => {
     setIsLoading(true);
     const response = await fetch(
-      "http://127.0.0.1:8000/teachers/" + teacherId + "/class"
+      "http://127.0.0.1:8000/classes/" + Student.classes
     );
     const data = await response.json();
     setClasss(data.name);
@@ -86,9 +86,6 @@ const ProfileStudent = (props) => {
             <div className={classes.phone}>
               <i class={classes["ti-mobile"]}></i>Số điện thoại:{" "}
               {Student.phoneparent}
-            </div>
-            <div className={classes.gmail}>
-              <i class={classes["ti-email"]}></i>Email: {Student.email}
             </div>
           </div>
         </div>

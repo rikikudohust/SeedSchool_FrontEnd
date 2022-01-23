@@ -6,6 +6,18 @@ import remarkGfm from "remark-gfm";
 
 const ViewActivities = (props) => {
   const [activities, setActivities] = useState({});
+  const [list, setList] = useState([]);
+
+  useEffect(async () => {
+    try {
+      const res = await axios.get(
+        "http://127.0.0.1:8000/activities/" + props.id + "/amount"
+      );
+      setList(res.data.length);
+    } catch {
+      console.log("wrong wrong wrong");
+    }
+  });
 
   //Lay thong tin chi tiet cua 1 hoat dong
   useEffect(async () => {
@@ -44,6 +56,7 @@ const ViewActivities = (props) => {
           children={activities.description}
           remarkPlugins={[remarkGfm]}
         />
+        <span className={classes.number}>Số người đăng ký: {list}</span>
         <button onClick={Delete}>Xóa hoạt động</button>
       </div>
     </>

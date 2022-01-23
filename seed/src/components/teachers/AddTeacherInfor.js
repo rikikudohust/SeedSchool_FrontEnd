@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import styles from "../../assets/CSS/parents/AddStudentInfor.module.css";
 import noFileChosenYet from "../../assets/Icons/nofilechosenyet.png";
+axios.defaults.withCredentials = true;
 
 const AddTeacherInfor = () => {
   const [name, setName] = useState();
@@ -54,21 +55,24 @@ const AddTeacherInfor = () => {
     let data = new FormData();
     data.append("user", localStorage.getItem("id"));
     console.log(localStorage.getItem("id"));
-    data.append("avatar", file, file.name);
+    data.append("avatar", file);
     data.append("name", name);
     data.append("sex", sex);
     data.append("achievement", achievement);
     data.append("phone", phoneNumber);
     data.append("address", address);
     data.append("age", age);
-    data.append("email", email);
+    data.append("position", email);
     console.log(data);
     console.log();
     try {
       const res = await axios.put(
-        "http://127.0.0.1:8000/teachers/profile",
+        "http://127.0.0.1:8000/teachers/" +
+          localStorage.getItem("id") +
+          "/profile",
         data
       );
+      alert("Success!");
     } catch {
       alert("wrong input");
     }
@@ -77,7 +81,7 @@ const AddTeacherInfor = () => {
   return (
     <>
       <div className={styles.popup_content}>
-        <h2 id="popup_title">Thêm thông tin học sinh</h2>
+        <h2 id="popup_title">Thêm thông tin cá nhân</h2>
         <div className={styles.flex_container}>
           <form action="#" className={styles.formStyle}>
             <div className={styles.inputInforStudent}>
@@ -124,7 +128,7 @@ const AddTeacherInfor = () => {
               <input
                 type="text"
                 className={styles.inputControl}
-                placeholder="Email"
+                placeholder="Học vấn"
                 onChange={handleEmail}
               />
             </div>

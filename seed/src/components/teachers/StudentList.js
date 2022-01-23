@@ -14,9 +14,11 @@ const StudentList = (props) => {
   //Lay data toan bo hoc sinh
   useEffect(async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/teachers/students", {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        "http://127.0.0.1:8000/teachers/" +
+          localStorage.getItem("id") +
+          "/students"
+      );
       // const data = await response.json();
       setStudents(res.data);
       console.log(Students);
@@ -28,7 +30,7 @@ const StudentList = (props) => {
   return (
     <>
       <div className={classes.container}>
-        <button className={button.btn} onClick={props.addStudent}>
+        <button className={button.btn} onClick={props.onAddStudent}>
           <Create />
         </button>
         <div className={classes.container_content}>

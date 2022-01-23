@@ -3,23 +3,54 @@ import classes from "../../assets/CSS/general/Anounn.module.css";
 import axios from "axios";
 
 const TeacherAnnoun = () => {
+  const [thongbaorieng, setthongbaorieng] = useState([]);
   const [thongbaochung, setthongbaochung] = useState([]);
   const [news2, setNews] = useState([]);
 
   useEffect(async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/teachers/person_news");
+      const res = await axios.get(
+        "http://127.0.0.1:8000/teachers/" +
+          localStorage.getItem("id") +
+          "/person_news"
+      );
       // const data = await response.json();
-      setthongbaochung(res.data);
+      setthongbaorieng(res.data);
     } catch {
       console.log("Error");
     }
   }, []);
 
+  useEffect(async () => {
+    try {
+      const res2 = await axios.get("http://127.0.0.1:8000/news/");
+      // const data = await response.json();
+      setthongbaochung(res2.data);
+    } catch {
+      console.log("Error");
+    }
+  }, []);
+
+  function checkTBR() {
+    return thongbaochung.id == thongbaorieng.id;
+  }
+
+  const filterByReference = (arr1, arr2) => {
+    let res = [];
+    res = arr1.filter((el) => {
+      return arr2.find((element) => {
+        return element.news === el.id;
+      });
+    });
+    return res;
+  };
+
+  console.log(filterByReference(thongbaochung, thongbaorieng));
+
   return (
     <>
       <ul className={classes.notification_body}>
-        {thongbaochung.map((element) => {
+        {filterByReference(thongbaochung, thongbaorieng).map((element) => {
           return (
             <li className={classes.notification_content}>
               <div className={classes.item}>

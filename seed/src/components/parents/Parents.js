@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import classes from "../../assets/CSS/admin/Admin.module.css";
 import Nav from "../general/Nav";
-import ParentsAnounn from "./ParentsAnounn";
+import PersonalAnnoun from "./PersonalAnnoun";
 // import avatar from '../../assets/Icons/momo.jpg'
 import ParentsActivities from "./ParentsActivities";
 import {
@@ -14,7 +14,7 @@ import {
   Check,
   PermIdentity,
 } from "@mui/icons-material";
-import Calendar from "../general/Schedule";
+import Calendar from "../general/ParentSchedule";
 import Checkin from "./Calendar";
 import ProfileTeacher from "../general/ProfileTeacher";
 import ProfileStudent from "../general/ProfileStudent";
@@ -25,8 +25,10 @@ import ViewTeacher from "./ViewTeacher";
 import Comment from "./Comment";
 import AddStudentInfor from "./AddStudentInfor";
 import ParentFee from "./ParentFee";
+import axios from "axios";
 
 const Parents = (props) => {
+  const [classname, setclassname] = useState();
   const [require, setRequire] = useState(0);
   const [profile, setProfile] = useState(0);
   const [teacherId, setTeacherId] = useState();
@@ -59,13 +61,24 @@ const Parents = (props) => {
   //Lay thong tin hoc sinh
   useEffect(async () => {
     const response = await fetch(
-      "http://127.0.0.1:8000/students/" + localStorage.getItem("id") + "/update"
+      "http://127.0.0.1:8000/students/" +
+        localStorage.getItem("id") +
+        "/profile"
     );
     const data = await response.json();
     if (data.avatar != null)
       setAvatar("http://127.0.0.1:8000/static" + data.avatar);
     setName(data.name);
+    setTeacherId(data.idteacher);
   }, []);
+
+  //lay thong tin ve lop
+  useEffect(async () => {
+    const res = await axios.get(
+      "http://127.0.0.1:8000/students/" + teacherId + "/teachers"
+    );
+    setclassname(res.data.name);
+  });
 
   //Lay thong tin giao vien
   useEffect(async () => {
@@ -86,7 +99,7 @@ const Parents = (props) => {
     <>
       <div className={classes.container}>
         <div className={classes.controller}>
-          <h1>{name}</h1>
+          <h1>Parent</h1>
           <button
             style={{ backgroundColor: require == 0 ? "#1877f2" : "#FFF" }}
             onClick={() => setRequire(0)}
@@ -199,9 +212,11 @@ const Parents = (props) => {
         <div className={classes.additional}>
           <Nav avatar={avatar} onProfile={onProfile} />
           {require == 0 && <Menu />}
-          {require == 6 && <Calendar />}
+          {require == 6 && (
+            <Calendar teacherId={teacherId} className={classname} />
+          )}
           {require == 2 && <ParentsActivities onOpenActi={onOpenActi} />}
-          {require == 3 && <ParentsAnounn />}
+          {require == 3 && <PersonalAnnoun />}
           {require == 7 && <AddStudentInfor />}
           {require == 1 && <Checkin />}
           {require == 4 && <ParentFee />}

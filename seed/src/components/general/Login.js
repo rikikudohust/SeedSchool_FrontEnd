@@ -3,6 +3,7 @@ import { useCookies } from "react-cookie";
 import classes from "../../assets/CSS/general/Login.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
 axios.defaults.withCredentials = true;
 
 const role = ["teachers", "parents", "admin"];
@@ -25,7 +26,6 @@ const Login = (prosp) => {
         withCredentials: true,
         httpOnly: true,
       });
-      setCookie("jwt", res.data.jwt, { path: "/" });
       localStorage.setItem("jwt", res.data.jwt);
       localStorage.setItem("id", res.data.id);
       navigate("/" + role[res.data.role - 1] + "/" + res.data.id);
@@ -65,8 +65,6 @@ const Login = (prosp) => {
             onChange={onPasswordHandle}
           />
           <button onClick={Login}>Login</button>
-          <h4>forgot password?</h4>
-          <div className={classes.line} />
         </div>
       </div>
     </>

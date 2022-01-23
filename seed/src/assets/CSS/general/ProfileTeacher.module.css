@@ -1,171 +1,139 @@
-/* html{
-    font-family: Arial, Helvetica, sans-serif;
-} */
+@import url("https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Neonderthaw&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Lato&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Roboto:ital@1&display=swap");
 
-.profile {
-  width: 100%;
-  /* margin-left: 15%;
-    z-index: 10; */
-  overflow: hidden;
+.contai {
+  position: relative;
+  font-family: "Dongle", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
-.profile_body {
-  text-align: center;
+.infor_ {
+  position: absolute;
+  z-index: 10000;
+  top: 0;
+  width: 325px;
+  background-color: #fff;
+  border-radius: 6px;
+  margin: 100px;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.image_avatar {
+  width: 325px;
+  height: 325px;
+}
+
+.image_avatar img {
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: row;
+  border-radius: 6px;
+  object-fit: cover;
 }
 
-.introduce_profile {
-  color: #fff;
-  background-color: rgba(79, 82, 255, 0.651);
-  width: 20%;
-  padding: 30px;
-  height: 110%;
-  height: 92vh;
-  /* display: flex;
-    flex-direction: column;
-    justify-content: center; */
+.infor_detail {
+  margin: 20px;
 }
 
-.body_img {
-  margin-top: 20px;
-  margin-left: 26px;
-  margin-bottom: 60px;
-  width: 170px;
-  height: 170px;
+._span {
+  font-weight: 700;
 }
 
-.introduce_profile img {
-  width: 100%;
-  border-radius: 50%;
+.introduce,
+.position,
+.sex,
+.age,
+.phone,
+.address {
+  margin-bottom: 15px;
 }
 
-.profile .contact {
-}
-
-.profile_title {
-  font-size: 20px;
-  border-bottom: 2px solid;
-  margin-bottom: 40px;
-  margin-top: 35px;
-}
-
-.profile_content {
-  text-align: left;
-  margin-bottom: 20px;
-}
-
-.profile .education {
-}
-
-.profile .position {
-}
-
-.details_profile {
-  margin-left: 0px;
-  width: 80%;
-  background-color: #e6e7e2;
-  overflow-y: auto;
-  height: 100vh;
-}
-
-.background_name {
-  background-color: #ccc;
-  display: inline-block;
-  width: 100%;
-  border-radius: 8px;
-}
-
-.profile .name {
-}
-
-.name_teacher {
-  margin-top: 80px;
-  color: #494242;
-  font-weight: 400;
-  border-bottom: 1px solid;
-  padding-bottom: 20px;
-  display: inline-block;
-}
-
-.profile .name p {
-  font-size: 24px;
-  color: #494242;
-  margin-bottom: 89px;
-}
-
-.profile .information {
-  padding: 20px;
-}
-
-.details_title {
-  display: inline-block;
-}
-
-.details_content {
-  text-align: left;
-  margin: 0px;
-  line-height: 1.4;
-}
-
-.class_master {
-  text-align: left;
-}
-
-.class_master_title {
-}
-
-.profile .comment {
-}
-
-.comment_title {
-  background-color: #ccc;
-  padding-top: 10px;
+.introduce {
   padding-bottom: 10px;
-  border-radius: 8px;
-  font-size: 18px;
+  border-bottom: 2px solid #ccc;
 }
 
-.comment_content {
+.backdrop {
+  width: 100vw;
+  background-image: url("https://img4.thuthuatphanmem.vn/uploads/2020/12/25/background-van-go-nho_060721795.jpg");
+  height: 250px;
 }
 
-.comment_item {
-  text-align: left;
+.logo {
+  padding: 10px 0 0 100px;
+  font-family: "Dongle", sans-serif;
+  font-family: "Neonderthaw", cursive;
+  font-size: 50px;
+  font-weight: 600;
+  color: #163b67;
+}
+
+.infor {
+  margin: 86px 0 10px 450px;
+}
+
+.name {
+  /* font-family: 'Dongle', sans-serif;
+    font-family: 'Lato', sans-serif; */
+  font-family: "Dongle", sans-serif;
+  font-family: "Pacifico", cursive;
+  font-size: 36px;
+  color: #163b67;
+}
+
+.slogan {
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0.6;
+}
+
+.about {
+  background-color: rgb(233, 233, 233);
+  padding: 20px 60px 0 500px;
+  min-height: 550px;
+}
+
+.achievement {
+  background-color: #fff;
+  padding: 30px;
+}
+
+.name_achievement {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.comments {
+  margin: 30px 0 0 50px;
+}
+
+.comment {
   display: flex;
-  margin-top: 20px;
-  width: 100%;
+  margin: 15px 0;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 2rem;
 }
 
-.avatar_commentator {
-  width: 40px;
-  margin-top: 22px;
+.avatar_user {
+  width: 70px;
+  height: 70px;
 }
 
-.avatar_commentator img {
+.avatar_user img {
   width: 100%;
+  height: 100%;
   border-radius: 50%;
 }
 
-.item_content {
-  padding: 0px;
-  width: 90%;
-  border-radius: 30px;
-  margin-left: 20px;
-  background-color: rgb(114, 102, 87);
+.content_comment {
+  margin-left: 30px;
 }
 
-.commentator {
+.name_user {
+  margin-bottom: 10px;
   font-weight: 600;
-  margin-left: 15px;
-}
-
-.content {
-  font-weight: lighter;
-  margin-left: 15px;
-}
-
-.profileImg {
-  border: 3px solid rgb(196, 196, 196);
+  font-size: 20px;
 }

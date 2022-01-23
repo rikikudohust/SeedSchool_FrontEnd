@@ -17,9 +17,21 @@ const Day = (props) => {
   const [onAddingFood, setOnAddingFood] = useState(false);
   const [listOfFood, setListOfFood] = useState([]);
   const [tmp, setTmp] = useState(header1);
+  const [state, setState] = useState(0);
+
+  const increase = () => {
+    setState(state + 1);
+  };
 
   const turnOnAddingFood = () => {
-    setOnAddingFood(!onAddingFood);
+    setOnAddingFood(true);
+  };
+
+  const turnOffAddingFood = () => {
+    const tmp = meal;
+    setMeal(5);
+    setMeal(tmp);
+    setOnAddingFood(false);
   };
 
   const deleteFood = async (id) => {
@@ -28,6 +40,9 @@ const Day = (props) => {
     } catch {
       alert("There are smth wrong!!");
     }
+    const tmp = meal;
+    setMeal(5);
+    setMeal(tmp);
   };
 
   useEffect(async () => {
@@ -40,7 +55,7 @@ const Day = (props) => {
     } catch {
       console.log("Error loading food");
     }
-  }, [meal, listOfFood]);
+  }, [meal]);
 
   return (
     <>
@@ -118,7 +133,11 @@ const Day = (props) => {
         })}
       </ul>
       {onAddingFood == true && (
-        <AddFood turnOnAddingFood={turnOnAddingFood} idDay={props.id} />
+        <AddFood
+          turnOffAddingFood={turnOffAddingFood}
+          idDay={props.id}
+          increase={increase}
+        />
       )}
     </>
   );
