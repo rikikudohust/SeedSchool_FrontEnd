@@ -172,12 +172,18 @@ const ProfileTeacher = (props) => {
                 <div className={classes.comment}>
                   <div className={classes.avatar_user}>
                     <img
-                      src="https://i0.wp.com/otobinhthuan.vn/wp-content/uploads/2021/12/tham-gia-vao-nganh-av.jpg?resize=472%2C590&ssl=1"
+                      src={
+                        para.avatar == null
+                          ? "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
+                          : "http://127.0.0.1:8000/static/" + para.avatar
+                      }
                       alt=""
                     />
                   </div>
                   <div className={classes.content_comment}>
-                    <div className={classes.name_user}>Rikka ono</div>
+                    <div className={classes.name_user}>
+                      Phụ huynh bé {para.student_name}
+                    </div>
                     <div className={classes.comment_user}>{para.comment}</div>
                   </div>
                 </div>

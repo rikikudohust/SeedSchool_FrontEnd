@@ -52,6 +52,8 @@ const Admin = (props) => {
 
   const closeAddClass = () => {
     console.log("clicked");
+    setRequire(69);
+    setRequire(3);
     setAddingClass(0);
   };
 

@@ -117,7 +117,7 @@ const AddStudentInfor = (props) => {
               <input
                 type="text"
                 className={styles.inputControl}
-                placeholder="Giới tính"
+                placeholder="Giới tính ( 1: Nam 0: Nữ)"
                 onChange={handleSex}
               />
             </div>

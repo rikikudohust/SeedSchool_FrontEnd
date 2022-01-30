@@ -112,7 +112,7 @@ const AddTeacherInfor = () => {
               <input
                 type="text"
                 className={styles.inputControl}
-                placeholder="Giới tính"
+                placeholder="Giới tính (1: nam 0: nữ)"
                 onChange={handleSex}
               />
             </div>

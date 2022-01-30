@@ -6,11 +6,30 @@ import PublicAnnoun from "../general/PublicAnnoun";
 import TeacherAnnoun from "./TeacherAnnoun";
 
 const PersonalAnnoun = () => {
+  const [choice, setChoice] = useState(1);
   return (
     <>
+      <div className={classes.btnHolder}>
+        <button
+          className={classes.btnMeal}
+          onClick={() => {
+            setChoice(1);
+          }}
+        >
+          Thông báo chung
+        </button>
+        <button
+          className={classes.btnMeal}
+          onClick={() => {
+            setChoice(2);
+          }}
+        >
+          Dành riêng cho bạn
+        </button>
+      </div>
       <div className={classes.notification}>
-        <TeacherAnnoun />
-        <PublicAnnoun />
+        {choice == 1 && <PublicAnnoun />}
+        {choice == 2 && <TeacherAnnoun />}
       </div>
     </>
   );
